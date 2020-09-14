@@ -1,0 +1,22 @@
+@media screen {
+  .report__alternative {
+    background-color: #f8f8f8;
+    width: 100%;
+    padding: 16px;
+    border: dashed 1px #dddddd;
+  }
+}
+
+@media print {
+  .report__alternative {
+    background: rgba(215, 215, 215, 0.3);
+    -webkit-print-color-adjust: exact;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 12px 20px 40px;
+    position: relative;
+    bottom: 300px;
+
+    position: relative;
+  }
+}

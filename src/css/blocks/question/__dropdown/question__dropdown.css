@@ -1,0 +1,27 @@
+@import url("./_with-input/question__dropdown_with-input.css");
+@import url("./_no-input/question__dropdown_no-input.css");
+
+@media screen {
+  .question__dropdown {
+    height: 32px;
+    border: 1px solid #cfd8dc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding-left: 4px;
+  }
+}
+
+@media print {
+  .question__dropdown {
+    display: inline-block;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    margin-bottom: 16px;
+    padding-left: 20px;
+  }
+
+  .question__dropdown::-ms-expand {
+    display: none;
+  }
+}

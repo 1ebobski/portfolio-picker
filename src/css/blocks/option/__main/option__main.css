@@ -1,0 +1,10 @@
+@media screen {
+  .option__main {
+  }
+}
+
+@media print {
+  .option__main {
+    margin-top: 24px;
+  }
+}

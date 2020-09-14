@@ -1,0 +1,16 @@
+@import url("./__qr-code/terminal__qr-code.css");
+@import url("./__dropdown/terminal__dropdown.css");
+@import url("./__title/terminal__title.css");
+@import url("./__attributes-list/terminal__attributes-list.css");
+@import url("./__attribute/terminal__attribute.css");
+@import url("./__heading/terminal__heading.css");
+@import url("./__text/terminal__text.css");
+
+@media screen {
+  .terminal {
+  }
+}
+@media print {
+  .terminal {
+  }
+}

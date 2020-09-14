@@ -1,0 +1,10 @@
+@media screen {
+  .recommendations__bonus-container {
+    display: none;
+  }
+}
+
+@media print {
+  .recommendations__bonus-container {
+  }
+}

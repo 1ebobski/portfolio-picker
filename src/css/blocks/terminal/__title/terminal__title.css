@@ -1,0 +1,9 @@
+@media screen {
+  .terminal__title {
+  }
+}
+@media print {
+  .terminal__title {
+    display: none;
+  }
+}

@@ -1,0 +1,11 @@
+@media screen {
+  .footer {
+    margin-bottom: 20px;
+  }
+}
+@media print {
+  .footer {
+    page-break-after: always;
+    padding: 40px;
+  }
+}

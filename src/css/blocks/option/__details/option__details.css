@@ -1,0 +1,20 @@
+@media screen {
+  .option__details {
+    color: #39404a;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #dddddd;
+  }
+}
+
+@media print {
+  .option__details {
+    display: flex;
+    justify-content: space-between;
+    line-height: 150%;
+  }
+
+  .option__details:not(:first-child):not(:last-child) {
+    border-bottom: 1.04157px solid #00bef0;
+  }
+}

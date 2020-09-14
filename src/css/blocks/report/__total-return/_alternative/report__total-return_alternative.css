@@ -1,0 +1,13 @@
+@media screen {
+  .report__total-return_alternative {
+  }
+}
+
+@media print {
+  .report__total-return_alternative {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    color: #5e5e5e;
+  }
+}

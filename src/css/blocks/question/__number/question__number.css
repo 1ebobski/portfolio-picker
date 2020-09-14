@@ -1,0 +1,12 @@
+@media screen {
+  .question__number {
+    margin-right: 8px;
+  }
+}
+
+@media print {
+  .question__number {
+    margin-right: 8px;
+    color: #00bef0;
+  }
+}

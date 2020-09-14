@@ -1,0 +1,14 @@
+@media screen {
+  .question__option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .question__option:nth-of-type(odd) {
+    background-color: #e7f2fb;
+  }
+}

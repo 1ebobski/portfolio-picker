@@ -1,0 +1,25 @@
+@import url("./__text/question__text.css");
+@import url("./__option/question__option.css");
+@import url("./__dropdown/question__dropdown.css");
+@import url("./__tick/question__tick.css");
+@import url("./__input-text/question__input-text.css");
+@import url("./__checkbox/question__checkbox.css");
+@import url("./__label/question__label.css");
+@import url("./__number/question__number.css");
+
+@media screen {
+  .question {
+    align-items: center;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px dashed rgba(207, 216, 220, 0.488168);
+    padding-bottom: 20px;
+  }
+}
+
+@media print {
+  .question {
+    border: none;
+    padding: 0;
+  }
+}

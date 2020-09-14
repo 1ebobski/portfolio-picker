@@ -1,0 +1,8 @@
+@media screen {
+  .plan__name {
+    color: #0074d9;
+    /* font-weight: bold; */
+    display: block;
+    margin: 0 10px 10px 0;
+  }
+}

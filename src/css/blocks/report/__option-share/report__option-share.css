@@ -1,0 +1,12 @@
+@media screen {
+  .report__option-share {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+@media print {
+  .report__option-share {
+    font-weight: bold;
+  }
+}

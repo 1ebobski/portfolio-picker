@@ -1,0 +1,12 @@
+@media screen {
+  .recommendations__bonus-digits {
+  }
+}
+
+@media print {
+  .recommendations__bonus-digits {
+    font-size: 2.5rem;
+    width: 30%;
+    border-right: solid 1px #fff;
+  }
+}

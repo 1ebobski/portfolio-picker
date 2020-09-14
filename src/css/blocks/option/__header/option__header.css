@@ -1,0 +1,15 @@
+@media screen {
+  .option__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+}
+
+@media print {
+  .option__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}

@@ -1,0 +1,10 @@
+@media screen {
+  .section__title_portfolio {
+  }
+}
+
+@media print {
+  .section__title_portfolio {
+    margin-left: 20px;
+  }
+}

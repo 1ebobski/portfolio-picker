@@ -1,0 +1,12 @@
+@media screen {
+  .option__about {
+    color: #39404a;
+  }
+}
+
+@media print {
+  .option__about {
+    /* font-size: 1rem; */
+
+  }
+}

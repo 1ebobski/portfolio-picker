@@ -1,0 +1,13 @@
+@media screen {
+  .recommendations__bonus-banner-text {
+    list-style-type: none;
+  }
+}
+
+@media print {
+  .recommendations__bonus-banner-text {
+    font-size: 0.8rem;
+    max-width: 260px;
+    margin-left: 40px;
+  }
+}

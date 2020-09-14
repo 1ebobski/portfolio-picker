@@ -1,0 +1,10 @@
+@media screen {
+  .report__option-return {
+  }
+}
+
+@media print {
+  .report__option-return {
+    margin-left: auto;
+  }
+}

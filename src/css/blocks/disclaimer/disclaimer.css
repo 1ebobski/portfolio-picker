@@ -1,0 +1,14 @@
+@media screen {
+  .disclaimer {
+    color: #a4a4a4;
+    margin-top: 40px;
+    padding-top: 400px;
+  }
+}
+@media print {
+  .disclaimer {
+    page-break-before: auto;
+    margin-top: 40px;
+    font-size: 0.7rem;
+  }
+}

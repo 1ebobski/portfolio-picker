@@ -1,0 +1,10 @@
+@media screen {
+  .report__graph {
+  }
+}
+
+@media print {
+  .report__graph {
+    margin-left: 20px;
+  }
+}

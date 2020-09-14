@@ -1,0 +1,12 @@
+@media screen {
+  .section__svg {
+    display: none;
+  }
+}
+
+@media print {
+  .section__svg {
+    display: block;
+    margin: 280px auto 0;
+  }
+}

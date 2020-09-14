@@ -1,0 +1,15 @@
+@media screen {
+  .report__alternative-title {
+    margin: 0;
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+@media print {
+  .report__alternative-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+}

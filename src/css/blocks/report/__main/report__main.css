@@ -1,0 +1,19 @@
+@media screen {
+  .report__main {
+    padding-top: 20px;
+  }
+}
+@media print {
+  .report__main {
+    margin: 0 auto 32px;
+    padding: 280px 20px 40px;
+    position: relative;
+    bottom: 300px;
+    z-index: -1;
+    /* padding: 12px 20px 40px; */
+
+    background: rgba(0, 190, 240, 0.1);
+    -webkit-print-color-adjust: exact;
+    border-radius: 10px;
+  }
+}

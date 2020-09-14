@@ -1,0 +1,9 @@
+@media screen {
+  .question__label_selected {
+    background-color: #cfd8dc;
+  }
+
+  .question__label_selected:hover {
+    background-color: #d0d0d0;
+  }
+}

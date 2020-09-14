@@ -1,0 +1,10 @@
+@media screen {
+  .report__total-return_main {
+  }
+}
+
+@media print {
+  .report__total-return_main {
+    margin-right: 20px;
+  }
+}

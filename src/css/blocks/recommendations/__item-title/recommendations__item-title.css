@@ -1,0 +1,13 @@
+@media screen {
+  .recommendations__item-title {
+  }
+}
+
+@media print {
+  .recommendations__item-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+
+    margin: 0;
+  }
+}

@@ -1,0 +1,10 @@
+@media screen {
+  .report__option-name {
+  }
+}
+
+@media print {
+  .report__option-name {
+    margin-left: 4px;
+  }
+}

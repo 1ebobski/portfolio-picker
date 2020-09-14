@@ -1,0 +1,23 @@
+@import url("./_portfolio/section__title_portfolio.css");
+@media screen {
+  .section__title {
+    letter-spacing: 1.5px;
+    background-color: #08c9ff27;
+    height: 30px;
+    text-align: center;
+    padding-top: 12px;
+  }
+}
+
+@media print {
+  .section__title {
+    font-family: "Druk Text Cyr", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+    text-transform: uppercase;
+    margin-top: 48px;
+    margin-bottom: 32px;
+  }
+}

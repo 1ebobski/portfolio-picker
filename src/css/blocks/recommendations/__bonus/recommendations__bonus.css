@@ -1,0 +1,13 @@
+@media screen {
+  .recommendations__bonus {
+    
+  }
+}
+
+@media print {
+  .recommendations__bonus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

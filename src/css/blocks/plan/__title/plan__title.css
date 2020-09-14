@@ -1,0 +1,6 @@
+@media screen {
+  .plan__title {
+    text-decoration: underline;
+    display: block;
+  }
+}

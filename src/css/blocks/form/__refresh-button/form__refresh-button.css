@@ -1,0 +1,10 @@
+@media screen {
+  .form__refresh-button {
+    background: linear-gradient(180deg, #08cbff 0%, #71e1ff 100%);
+    color: #fff;
+  }
+
+  .form__refresh-button:hover {
+    background: linear-gradient(0deg, #08cbff 0%, #71e1ff 100%);
+  }
+}

@@ -1,0 +1,17 @@
+@media screen {
+  .question__input-text {
+    width: 49%;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid #cfd8dc;
+    border-radius: 4px;
+    padding-left: 8px;
+  }
+}
+
+@media print {
+  .question__input-text {
+    border: none;
+    padding-left: 20px;
+  }
+}

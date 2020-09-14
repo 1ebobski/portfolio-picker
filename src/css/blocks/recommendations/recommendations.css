@@ -1,0 +1,27 @@
+@import url("./__item/recommendations__item.css");
+@import url("./__item-text/recommendations__item-text.css");
+@import url("./__item-title/recommendations__item-title.css");
+@import url("./__bonus-list/recommendations__bonus-list.css");
+@import url("./__bonus/recommendations__bonus.css");
+@import url("./__bonus-caption/recommendations__bonus-caption.css");
+@import url("./__bonus-icon/recommendations__bonus-icon.css");
+@import url("./__bonus-banner/recommendations__bonus-banner.css");
+@import url("./__bonus-digits/recommendations__bonus-digits.css");
+@import url("./__bonus-banner-text/recommendations__bonus-banner-text.css");
+@import url("./__bonus-footnote/recommendations__bonus-footnote.css");
+@import url("./__item-text/recommendations__item-text.css");
+@import url("./__bonus-text/recommendations__bonus-text.css");
+@import url("./__bonus-container/recommendations__bonus-container.css");
+
+@media screen {
+  .recommendations {
+    list-style-type: none;
+  }
+}
+
+@media print {
+  .recommendations {
+    list-style-type: none;
+    padding: 0;
+  }
+}

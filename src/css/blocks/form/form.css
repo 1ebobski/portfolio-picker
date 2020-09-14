@@ -1,0 +1,20 @@
+@import url("./__refresh-button/form__refresh-button.css");
+@import url("./__button-container/form__button-container.css");
+
+@media screen {
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+}
+
+@media print {
+  .form {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 130%;
+  }
+}

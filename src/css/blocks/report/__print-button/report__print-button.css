@@ -1,0 +1,10 @@
+@media screen {
+  .report__print-button {
+    color: #000;
+    background-color: #f8f8f8;
+  }
+
+  .report__print-button:hover {
+    background-color: #e8e8e8;
+  }
+}

@@ -1,0 +1,19 @@
+@media screen {
+  .recommendations__bonus-banner {
+    list-style-type: none;
+  }
+}
+
+@media print {
+  .recommendations__bonus-banner {
+    background-color: #00bef0;
+    color: #fff;
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    padding: 24px 56px;
+
+    -webkit-print-color-adjust: exact;
+  }
+}

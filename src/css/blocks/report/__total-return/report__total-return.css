@@ -1,0 +1,22 @@
+@import url("./_main/report__total-return_main.css");
+@import url("./_alternative/report__total-return_alternative.css");
+
+@media screen {
+  .report__total-return {
+    width: 60px;
+    display: block;
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 16px;
+    color: green;
+  }
+}
+
+@media print {
+  .report__total-return {
+    display: block;
+    margin-left: auto;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,15 @@
+@media screen {
+  .terminal__attribute {
+  }
+}
+
+@media print {
+  .terminal__attribute::before {
+    content: "\2022";
+    color: #00bef0;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+}

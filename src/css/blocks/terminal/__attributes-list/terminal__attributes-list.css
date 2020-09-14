@@ -1,0 +1,12 @@
+@media screen {
+  .terminal__attributes-list {
+  }
+}
+@media print {
+  .terminal__attributes-list {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0 auto;
+    line-height: 150%;
+  }
+}

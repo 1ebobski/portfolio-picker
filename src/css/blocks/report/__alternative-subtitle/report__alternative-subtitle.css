@@ -1,0 +1,15 @@
+@media screen {
+  .report__alternative-subtitle {
+    margin: 0;
+    color: #555555;
+    display: inline-block;
+  }
+}
+
+@media print {
+  .report__alternative-subtitle {
+    margin: 4px 0 0;
+    color: #5e5e5e;
+    /* display: inline-block; */
+  }
+}

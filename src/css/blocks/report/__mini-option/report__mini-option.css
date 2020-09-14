@@ -1,0 +1,21 @@
+@media screen {
+  .report__mini-option {
+    padding: 4px;
+    border-bottom: 1px solid #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media print {
+  .report__mini-option {
+    padding: 4px;
+
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .report__mini-option:not(:last-child) {
+    border-bottom: 1px solid #5e5e5e;
+  }
+}

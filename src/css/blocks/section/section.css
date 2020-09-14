@@ -1,0 +1,22 @@
+@import url("./__title/section__title.css");
+@import url("./__svg/section__svg.css");
+@import url("./__logo/section__logo.css");
+@import url("./__intro/section__intro.css");
+
+@media screen {
+  .section {
+    margin-bottom: 20px;
+  }
+}
+@media print {
+  .section {
+    page-break-after: always;
+    padding: 40px;
+  }
+}
+
+/* stackoverflow: The A4 page size is defined as 210mm x 297mm, which is 8.268" x 11.69". 
+Since CSS pixels are 96px/inch (as long as we're talking about a high-resolution device like a printer -- 
+CSS pixels equal device pixels for low-res applications), 
+I think you should be able to rely on the page size being 793.7px x 1123px, 
+less any margins you want to provide, without having to extract these values through code. */

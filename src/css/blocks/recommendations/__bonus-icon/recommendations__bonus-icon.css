@@ -1,0 +1,10 @@
+@media screen {
+  .recommendations__bonus-icon {
+  }
+}
+
+@media print {
+  .recommendations__bonus-icon {
+    max-height: 80px;
+  }
+}

@@ -1,0 +1,27 @@
+@import url("./__option-share/report__option-share.css");
+@import url("./__mini-option/report__mini-option.css");
+@import url("./__preview/report__preview.css");
+@import url("./__print-button/report__print-button.css");
+@import url("./__total-return/report__total-return.css");
+@import url("./__alternative/report__alternative.css");
+@import url("./__alternative-title/report__alternative-title.css");
+@import url("./__alternative-subtitle/report__alternative-subtitle.css");
+@import url("./__main/report__main.css");
+@import url("./__graph/report__graph.css");
+@import url("./__option-return/report__option-return.css");
+@import url("./__option-name/report__option-name.css");
+
+@media screen {
+  .report {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+}
+
+@media print {
+  .report {
+    font-size: 0.8rem;
+    margin-bottom: -280px;
+  }
+}

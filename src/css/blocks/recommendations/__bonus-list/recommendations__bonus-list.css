@@ -1,0 +1,14 @@
+@media screen {
+  .recommendations__bonus-list {
+  }
+}
+
+@media print {
+  .recommendations__bonus-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 36px 0 40px;
+  }
+}

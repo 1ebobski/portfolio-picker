@@ -1,0 +1,13 @@
+@media screen {
+  .recommendations__bonus-footnote {
+  }
+}
+
+@media print {
+  .recommendations__bonus-footnote {
+    color: #c4c4c4;
+    font-size: 0.8rem;
+    margin-top: 200px;
+    display: block;
+  }
+}

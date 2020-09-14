@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Druk Text Cyr";
+  src: url("./fonts/Druk-Text-Cyr-Medium.otf") format("opentype");
+}

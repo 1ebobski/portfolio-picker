@@ -1,0 +1,10 @@
+@media screen {
+  .recommendations__bonus-text {
+  }
+}
+
+@media print {
+  .recommendations__bonus-text {
+    margin: 24px auto;
+  }
+}

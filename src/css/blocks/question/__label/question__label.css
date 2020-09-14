@@ -1,0 +1,17 @@
+@import url("./_selected/question__label_selected.css");
+@import url("./_not-selected/question__label_not-selected.css");
+
+@media screen {
+  .question__label {
+    border: solid 1px #cfd8dc;
+    border-radius: 4px;
+    padding: 4px;
+    display: inline-block;
+    margin: 4px;
+    text-align: center;
+  }
+
+  .question__label:hover {
+    cursor: pointer;
+  }
+}

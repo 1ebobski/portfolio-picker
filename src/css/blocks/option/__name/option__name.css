@@ -1,0 +1,15 @@
+@media screen {
+  .option__name {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+@media print {
+  .option__name {
+    font-weight: bold;
+    font-size: 1.25rem;
+
+    margin: 0;
+  }
+}

@@ -1,0 +1,10 @@
+@media screen {
+  .section__intro {
+  }
+}
+
+@media print {
+  .section__intro {
+    margin: 24px auto;
+  }
+}

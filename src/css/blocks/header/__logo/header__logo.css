@@ -1,0 +1,11 @@
+@media screen {
+  .header__logo {
+    padding: 10px 20px;
+  }
+}
+
+@media print {
+  .header__logo {
+    display: none;
+  }
+}

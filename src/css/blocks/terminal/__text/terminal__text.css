@@ -1,0 +1,10 @@
+@media screen {
+  .terminal__text {
+  }
+}
+
+@media print {
+  .terminal__text {
+    margin: 24px auto;
+  }
+}

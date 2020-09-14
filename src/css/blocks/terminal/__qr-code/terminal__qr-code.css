@@ -1,0 +1,15 @@
+@media screen {
+  .terminal__qr-code {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@media print {
+  .terminal__qr-code {
+    width: 25%;
+    marginright: auto;
+    display: block;
+  }
+}

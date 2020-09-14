@@ -1,0 +1,14 @@
+@media screen {
+    .recommendations__bonus-caption {
+      
+    }
+  }
+  
+  @media print {
+    .recommendations__bonus-caption {
+      font-size: 0.8rem;
+      font-weight: normal;
+
+      text-align: center;
+    }
+  }

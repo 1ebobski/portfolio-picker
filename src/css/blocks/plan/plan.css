@@ -1,0 +1,13 @@
+@import url("./__title/plan__title.css");
+@import url("./__name/plan__name.css");
+@import url("./__description/plan__description.css");
+
+@media screen {
+  .plan {
+    /* border: 1px solid red; */
+    width: 90%;
+    background-color: #e7f2fb;
+    padding: 10px;
+    margin-top: 10px;
+  }
+}

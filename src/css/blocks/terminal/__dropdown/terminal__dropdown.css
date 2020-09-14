@@ -1,0 +1,24 @@
+@media screen {
+  .terminal__dropdown {
+    height: 32px;
+    border: 1px solid #cfd8dc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding-left: 4px;
+    width: 100%;
+  }
+}
+
+@media print {
+  .terminal__dropdown {
+    /* background-color: #08c9ff27; */
+    display: inline-block;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .terminal__dropdown::-ms-expand {
+    display: none;
+  }
+}

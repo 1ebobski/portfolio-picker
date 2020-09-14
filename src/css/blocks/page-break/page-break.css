@@ -1,0 +1,32 @@
+html,
+body,
+.main,
+.tabs,
+.tabbed-content {
+  float: none;
+}
+@media print {
+  .break-after {
+    display: block;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .break-before {
+    display: block;
+    page-break-before: always;
+    position: relative;
+  }
+
+  section {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+}
+
+/* @media print {
+  .page-break {
+    clear: both;
+    page-break-after: always;
+  }
+} */

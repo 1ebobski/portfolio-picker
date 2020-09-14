@@ -1,0 +1,22 @@
+@import url("./__name/option__name.css");
+@import url("./__header/option__header.css");
+@import url("./__amount/option__amount.css");
+@import url("./__about/option__about.css");
+@import url("./__details/option__details.css");
+@import url("./__number/option__number.css");
+@import url("./__main/option__main.css");
+
+@media screen {
+  .option {
+    background-color: #f8f8f8;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: solid 1px #dddddd;
+  }
+}
+
+@media print {
+  .option:not(:last-child) {
+    margin-bottom: 64px;
+  }
+}
