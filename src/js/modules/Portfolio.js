@@ -43,14 +43,16 @@ export default class Portfolio {
     //     break;
     // }
 
+    console.log(this.helpRequestString);
+
     switch (this.helpRequestString) {
-      case "Хочу полный выбор сервисов":
+      case "Решения принимаю только сам лично, даже какие ценные бумаги и когда покупать":
         return isCurrency ? this.matrixCurFull : this.matrixRubFull;
-      case "Хочу получать рекомендации, но решения принимаю самостоятельно":
+      case "Решения принимаю сам, но мне нужна аналитика и поддержка, включая инвестиционные идеи":
         return isCurrency ? this.matrixCurRec : this.matrixRubRec;
-      case "Хочу персональное сопровождение моих инвестиций":
+      case "Готов нечасто принимать инвестиционные решения и предоставить аналитическкую работу профессионалам":
         return isCurrency ? this.matrixCurLb : this.matrixRubLb;
-      case "Рекомендации не требуются":
+      case "Не готов ответить":
         return isCurrency ? this.matrixCurNone : this.matrixRubNone;
     }
   }
@@ -84,6 +86,11 @@ export default class Portfolio {
     this.selectedPapers = portfolioKeys
       .map((key) =>
         [".1", ".2", ".3"].map((subKey) => {
+          console.log(
+            key + subKey,
+            this._matrixApplier(isCurrency),
+            isCurrency
+          );
           return this._selectSecurities(
             key + subKey,
             this._matrixApplier(isCurrency)

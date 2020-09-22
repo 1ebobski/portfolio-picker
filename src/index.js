@@ -170,7 +170,7 @@ const handleChanges = () => {
   form.getInvestmentAmount();
   form.getFilter();
   form.assignRiskProfile();
-  form.assignPortfolioKeys();
+  form.assignPortfolioKeys(); 
   form.assignDueDate();
 
   // update portfolio with required data from form component

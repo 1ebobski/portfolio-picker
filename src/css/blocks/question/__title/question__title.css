@@ -1,0 +1,12 @@
+@media screen {
+  .question__title {
+    width: 100%;
+    height: 32px;
+    background-color: #08c9ff27;
+  }
+}
+
+@media print {
+  .question__title {
+  }
+}
