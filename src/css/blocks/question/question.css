@@ -6,6 +6,7 @@
 @import url("./__checkbox/question__checkbox.css");
 @import url("./__label/question__label.css");
 @import url("./__number/question__number.css");
+@import url("./__title/question__title.css");
 
 @media screen {
   .question {

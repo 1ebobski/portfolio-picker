@@ -10,12 +10,18 @@ export default class Form {
       ".question__dropdown"
     );
 
-    // select money amount input element
-    this.inputElement = this.formElement.querySelector(".question__input-text");
-    this.supportLevelElement = this.formElement.querySelector(".support-level");
+    // select accompaniment question
 
+    // select money amount input element
+    this.inputElements = this.formElement.querySelectorAll(
+      ".question__input-text"
+    );
+    this.supportLevelElement = this.formElement.querySelector(".support-level");
+    this._goalElement = this.formElement.querySelector(".goal");
     // event listener
-    this.inputElement.addEventListener("input", this._formatInput);
+    [...this.inputElements].forEach((element) =>
+      element.addEventListener("input", this._formatInput)
+    );
 
     // console.log(this._questionElements, this.inputElement);
   }
@@ -36,15 +42,17 @@ export default class Form {
     this.helpRequestString = this.supportLevelElement.options[
       this.supportLevelElement.selectedIndex
     ].text;
+
+    // console.log(this._answers, this.helpRequestString);
   }
 
   getInvestmentAmount() {
     this._getCurrency();
 
     this.investmentAmount =
-      +this.inputElement.value.replace(/\s/g, "") >=
+      +[...this.inputElements][2].value.replace(/\s/g, "") >=
       10000 * this.prices[this.currency]
-        ? +this.inputElement.value.replace(/\s/g, "")
+        ? +[...this.inputElements][2].value.replace(/\s/g, "")
         : 10000 * this.prices[this.currency];
 
     this.investmentAmountRubbles =
@@ -68,11 +76,40 @@ export default class Form {
   }
 
   assignRiskProfile() {
+    const goalArray = [
+      ["Защитить сбережения от инфляции", "Создать подушку безопасности"],
+      ["Попробовать/поучиться"],
+      [
+        "Обеспечить свою пенсию",
+        "Позаботиться о будущем детей и близких",
+        "Создать регулярный источник дохода",
+      ],
+      ["Торговать с целью финансировать крупную покупку"],
+    ];
+
+    // console.log(this._goalElement[this._goalElement.selectedIndex].text);
+    let goalIndex;
+    goalArray.forEach((element, index) => {
+      // console.log(
+      //   element,
+      //   this._goalElement[this._goalElement.selectedIndex].text
+      // );
+      if (
+        element.includes(
+          this._goalElement[this._goalElement.selectedIndex].text
+        )
+      ) {
+        goalIndex = index;
+      }
+    });
+
+    // console.log(this._answers[6], goalIndex);
+
     this.riskProfiles = [
-      +this._riskMatrix[this._answers[2]][this._answers[0]],
-      +this._riskMatrix[this._answers[2]][this._answers[0]] < 7
-        ? +this._riskMatrix[this._answers[2]][this._answers[0]] + 1
-        : +this._riskMatrix[this._answers[2]][this._answers[0]],
+      +this._riskMatrix[this._answers[6]][goalIndex],
+      +this._riskMatrix[this._answers[6]][goalIndex] < 7
+        ? +this._riskMatrix[this._answers[6]][goalIndex] + 1
+        : +this._riskMatrix[this._answers[6]][goalIndex],
     ];
 
     // console.log(this.riskProfiles);
@@ -86,6 +123,8 @@ export default class Form {
           .reverse()
           .find((key) => this._moneyScale[key] <= this.investmentAmountRubbles)
     );
+
+    console.log(this.portfolioKeys);
   }
 
   assignDueDate() {
@@ -109,7 +148,8 @@ export default class Form {
   }
 
   _getCurrency() {
-    switch (this._answers[1]) {
+    console.log(this._answers, this._answers[3]);
+    switch (this._answers[3]) {
       case 0:
         this.currency = "ruble";
         this.isCurrency = false;
@@ -123,6 +163,8 @@ export default class Form {
         this.isCurrency = true;
         break;
     }
+
+    console.log(this.isCurrency);
   }
 
   createFilter() {
@@ -176,7 +218,7 @@ export default class Form {
       ...this._filterElement.querySelectorAll(".question__label"),
     ];
 
-    switch ([...this._questionElements][4].selectedIndex) {
+    switch (this.supportLevelElement.selectedIndex) {
       case 0:
         filterButtonsElementsList.forEach(this._unpressFilterButton);
         break;

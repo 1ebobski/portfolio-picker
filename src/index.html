@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Portfolio Picker</title>
     <link
@@ -119,31 +119,28 @@
 
           <form class="form">
             <fieldset class="question">
-              <legend class="question__text">
-                <span class="question__number">1.</span>Ваша основная
-                инвестиционная задача - это...
-              </legend>
-
+              <legend class="question__title"> Цель </legend>
+              <h3 class="question__text">1. Выберите вашу цель</h3>
               <select
-                class="question__dropdown question__dropdown_no-input"
+                class="question__dropdown question__dropdown_no-input goal"
                 name="first"
               >
-                <option value="one">Защитить сбережения</option>
-                <option value="two">Попробовать/поучиться</option>
-                <option value="three"
-                  >Получать регулярные выплаты (дивиденды, разовые
-                  сделки)</option
-                >
-                <option value="four" selected
-                  >Заработать конкретную сумму
+                <option value="1" selected>Создать подушку безопасности</option>
+                <option value="2">Защитить сбережения от инфляции</option>
+                <option value="3">Обеспечить свою пенсию</option>
+                <option value="4"
+                  >Позаботиться о будущем детей и близких
+                </option>
+                <option value="5">Создать регулярный источник дохода </option>
+                <option value="6">Попробовать торговать </option>
+                <option value="7"
+                  >Торговать с целью финансировать крупную покупку
                 </option>
               </select>
-            </fieldset>
-            <fieldset class="question question_with-input">
-              <legend class="question__text">
-                <span class="question__number">2.</span>Какую сумму планируете
-                инвестировать?
-              </legend>
+
+              <h3 class="question__text"
+                >2. Какая сумма удовлетворит вашу цель?</h3
+              >
 
               <input
                 class="question__input-text"
@@ -155,83 +152,123 @@
                 class="question__dropdown question__dropdown_with-input"
                 name="currency"
               >
-                <option value="one">рублей</option>
-                <option value="two">долларов</option>
-                <option value="three">евро</option>
+                <option value="1">рублей</option>
+                <option value="2">долларов</option>
+                <option value="3">евро</option>
+              </select>
+              <h3 class="question__text"
+                >3. В какой срок вы планируете достижение цели?</h3
+              >
+
+              <input class="question__input-text" type="text" value="2" />
+
+              <select
+                class="question__dropdown question__dropdown_with-input"
+                name="currency"
+              >
+                <option value="1">года</option>
+                <option value="2">месяца</option>
               </select>
             </fieldset>
-            <fieldset class="question">
-              <legend class="question__text">
-                <span class="question__number">3.</span>Какой подход к
-                инвестированию вам больше подходит?
-              </legend>
+
+            <fieldset class="question question_with-input">
+              <legend class="question__title"> Сумма инвестирования </legend>
+              <h3 class="question__text"
+                >1. Какая ваша стартовая сумма инвестиций?</h3
+              >
+              <input
+                class="question__input-text"
+                type="text"
+                value="1 000 000"
+              />
+
+              <select
+                class="question__dropdown question__dropdown_with-input"
+                name="currency"
+              >
+                <option value="1">рублей</option>
+                <option value="2">долларов</option>
+                <option value="3">евро</option>
+              </select>
+
+              <h3 class="question__text"
+                >2. Планируете ли вы регулярные довнесения денежных средств?</h3
+              >
 
               <select
                 class="question__dropdown question__dropdown_no-input"
                 name="first"
               >
-                <option value="one">Доходность: +8%; Просадка: -5%</option>
-                <option value="two">Доходность: +15%; Просадка: -10%</option>
-                <option value="three">Доходность: +20%; Просадка: -15%</option>
-                <option value="four" selected
+                <option value="1" selected>каждый месяц</option>
+                <option value="2">каждый квартал</option>
+                <option value="3">каждый год</option>
+              </select>
+              <input class="question__input-text" type="text" value="10 000" />
+
+              <select
+                class="question__dropdown question__dropdown_with-input"
+                name="currency"
+              >
+                <option value="1">рублей</option>
+                <option value="2">долларов</option>
+                <option value="3">евро</option>
+              </select>
+            </fieldset>
+            <fieldset class="question">
+              <legend class="question__title"> Доходность / Просадка </legend>
+              <h3 class="question__text"
+                >1. Какой потенциальный результат инвестиций вы приемлете?</h3
+              >
+              <select
+                class="question__dropdown question__dropdown_no-input"
+                name="first"
+              >
+                <option value="1">Доходность: +8%; Просадка: -5%</option>
+                <option value="2">Доходность: +15%; Просадка: -10%</option>
+                <option value="3">Доходность: +20%; Просадка: -15%</option>
+                <option value="4" selected
                   >Доходность: максимальная; Просадка: любая</option
                 >
               </select>
             </fieldset>
 
             <fieldset class="question">
-              <legend class="question__text">
-                <span class="question__number">4.</span>На какой срок рассчитать
-                предложение?
-              </legend>
-
-              <select
-                class="question__dropdown question__dropdown_no-input"
-                name="first"
+              <legend class="question__title">Параметры сопровождения</legend>
+              <h3 class="question__text"
+                >1. Выберите подходящие параметры сопровождения:</h3
               >
-                <option value="one">до 1 года</option>
-                <option value="two">до 2 лет</option>
-                <option value="three" selected>любой срок</option>
-              </select>
-            </fieldset>
-
-            <fieldset class="question">
-              <legend class="question__text">
-                <span class="question__number">5.</span>Выберите подходящие
-                параметры сопровождения
-              </legend>
               <select
                 class="question__dropdown question__dropdown_no-input support-level"
                 name="first"
               >
-                <option value="one" selected>Хочу полный выбор сервисов</option>
-                <option value="two"
-                  >Хочу получать рекомендации, но решения принимаю
-                  самостоятельно</option
+                <option value="1"
+                  >Решения принимаю только сам лично, даже какие ценные бумаги и
+                  когда покупать</option
                 >
-                <option value="three"
-                  >Хочу персональное сопровождение моих инвестиций</option
+                <option value="2" selected
+                  >Решения принимаю сам, но мне нужна аналитика и поддержка,
+                  включая инвестиционные идеи</option
                 >
-                <option value="four">Рекомендации не требуются</option>
+
+                <option value="3"
+                  >Готов нечасто принимать инвестиционные решения и предоставить
+                  аналитическкую работу профессионалам</option
+                >
+                <option value="4">Не готов ответить</option>
               </select>
-            </fieldset>
-            <fieldset class="question question_with-input">
-              <legend class="question__text">
-                <span class="question__number">6.</span>Какую сумму вы хотите
-                получить в конце срока?
-              </legend>
 
-              <input class="question__input-text" type="text" />
-
-              <select
-                class="question__dropdown question__dropdown_with-input"
-                name="currency"
+              <input
+                type="checkbox"
+                id="accompaniment"
+                class="question__help-checkbox"
+                checked
+              />
+              <label for="accompaniment" class="question__checkbox-text"
+                >Готов рассмотреть услугу индивидуального сопровождения от
+                Персонального брокера</label
               >
-                <option value="one">рублей</option>
-                <option value="two">долларов</option>
-                <option value="three">евро</option>
-              </select>
             </fieldset>
+
             <div class="form__button-container">
               <button class="button form__refresh-button" type="button"
                 >Новый портфель</button
