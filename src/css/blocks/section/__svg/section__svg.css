@@ -7,6 +7,6 @@
 @media print {
   .section__svg {
     display: block;
-    margin: 280px auto 0;
+    margin: 180px auto 0;
   }
 }

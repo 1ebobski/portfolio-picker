@@ -142,7 +142,7 @@ const portfolio = new Portfolio({
 
 // creates filter element in form component
 // form.insertLogo();
-form.createFilter();
+// form.createFilter();
 report.createReportSection();
 recommendation.createRecommendationsSection();
 
@@ -168,7 +168,7 @@ const handleChanges = () => {
   // and assign risk profiles, portfolio keys and due date for portfolio selection
   form.getAnswers();
   form.getInvestmentAmount();
-  form.getFilter();
+  // form.getFilter();
   form.assignRiskProfile();
   form.assignPortfolioKeys(); 
   form.assignDueDate();
@@ -181,7 +181,7 @@ const handleChanges = () => {
     investmentAmountRubbles: form.investmentAmountRubbles,
     isCurrency: form.isCurrency,
     currency: form.currency,
-    filterList: form.filterList,
+    // filterList: form.filterList,
     helpRequestString: form.helpRequestString,
   });
 

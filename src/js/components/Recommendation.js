@@ -41,9 +41,9 @@ export default class Recommendation {
 
     this.thirdRecommendationElement.querySelector(
       ".recommendations__item-text"
-    ).textContent = (this.recommendationMatrix.find((element) => {
-      return element.minAmount <= this.investmentAmountRubbles;
-    }) || this.recommendationMatrix[2])[this.helpRequestString];
+    ).textContent = (this.recommendationMatrix.find(
+      (element) => element.minAmount <= this.investmentAmountRubbles
+    ) || this.recommendationMatrix[2])[this.helpRequestString];
   }
 
   createRecommendationsSection() {

@@ -22,8 +22,6 @@ export default class Form {
     [...this.inputElements].forEach((element) =>
       element.addEventListener("input", this._formatInput)
     );
-
-    // console.log(this._questionElements, this.inputElement);
   }
 
   _formatInput(event) {
@@ -42,8 +40,6 @@ export default class Form {
     this.helpRequestString = this.supportLevelElement.options[
       this.supportLevelElement.selectedIndex
     ].text;
-
-    // console.log(this._answers, this.helpRequestString);
   }
 
   getInvestmentAmount() {
@@ -78,7 +74,7 @@ export default class Form {
   assignRiskProfile() {
     const goalArray = [
       ["Защитить сбережения от инфляции", "Создать подушку безопасности"],
-      ["Попробовать/поучиться"],
+      ["Попробовать торговать"],
       [
         "Обеспечить свою пенсию",
         "Позаботиться о будущем детей и близких",
@@ -87,13 +83,8 @@ export default class Form {
       ["Торговать с целью финансировать крупную покупку"],
     ];
 
-    // console.log(this._goalElement[this._goalElement.selectedIndex].text);
     let goalIndex;
     goalArray.forEach((element, index) => {
-      // console.log(
-      //   element,
-      //   this._goalElement[this._goalElement.selectedIndex].text
-      // );
       if (
         element.includes(
           this._goalElement[this._goalElement.selectedIndex].text
@@ -103,16 +94,12 @@ export default class Form {
       }
     });
 
-    // console.log(this._answers[6], goalIndex);
-
     this.riskProfiles = [
       +this._riskMatrix[this._answers[6]][goalIndex],
       +this._riskMatrix[this._answers[6]][goalIndex] < 7
         ? +this._riskMatrix[this._answers[6]][goalIndex] + 1
         : +this._riskMatrix[this._answers[6]][goalIndex],
     ];
-
-    // console.log(this.riskProfiles);
   }
 
   assignPortfolioKeys() {
@@ -123,8 +110,6 @@ export default class Form {
           .reverse()
           .find((key) => this._moneyScale[key] <= this.investmentAmountRubbles)
     );
-
-    console.log(this.portfolioKeys);
   }
 
   assignDueDate() {
@@ -148,7 +133,6 @@ export default class Form {
   }
 
   _getCurrency() {
-    console.log(this._answers, this._answers[3]);
     switch (this._answers[3]) {
       case 0:
         this.currency = "ruble";
@@ -163,8 +147,6 @@ export default class Form {
         this.isCurrency = true;
         break;
     }
-
-    console.log(this.isCurrency);
   }
 
   createFilter() {
@@ -220,10 +202,13 @@ export default class Form {
 
     switch (this.supportLevelElement.selectedIndex) {
       case 0:
-        filterButtonsElementsList.forEach(this._unpressFilterButton);
+        this._pressFilterButton(filterButtonsElementsList[0]);
+        this._unpressFilterButton(filterButtonsElementsList[1]);
+        this._pressFilterButton(filterButtonsElementsList[2]);
+        this._unpressFilterButton(filterButtonsElementsList[3]);
         break;
       case 1:
-        this._pressFilterButton(filterButtonsElementsList[0]);
+        this._unpressFilterButton(filterButtonsElementsList[0]);
         this._unpressFilterButton(filterButtonsElementsList[1]);
         this._pressFilterButton(filterButtonsElementsList[2]);
         this._unpressFilterButton(filterButtonsElementsList[3]);
@@ -232,13 +217,10 @@ export default class Form {
         this._unpressFilterButton(filterButtonsElementsList[0]);
         this._pressFilterButton(filterButtonsElementsList[1]);
         this._unpressFilterButton(filterButtonsElementsList[2]);
-        this._pressFilterButton(filterButtonsElementsList[3]);
+        this._unpressFilterButton(filterButtonsElementsList[3]);
         break;
       case 3:
-        this._unpressFilterButton(filterButtonsElementsList[0]);
-        this._pressFilterButton(filterButtonsElementsList[1]);
-        this._pressFilterButton(filterButtonsElementsList[2]);
-        this._pressFilterButton(filterButtonsElementsList[3]);
+        filterButtonsElementsList.forEach(this._unpressFilterButton);
         break;
     }
   }
