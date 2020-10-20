@@ -125,6 +125,9 @@
                 class="question__dropdown question__dropdown_no-input goal"
                 name="first"
               >
+                <option value="0" hidden disabled selected
+                  >-- выберите вариант --</option
+                >
                 <option value="1">Создать подушку безопасности</option>
                 <option value="2">Защитить сбережения от инфляции</option>
                 <option value="3">Обеспечить свою пенсию</option>
@@ -132,7 +135,7 @@
                   >Позаботиться о будущем детей и близких
                 </option>
                 <option value="5">Создать регулярный источник дохода </option>
-                <option value="6" selected>Попробовать торговать </option>
+                <option value="6">Попробовать торговать </option>
                 <option value="7"
                   >Торговать с целью финансировать крупную покупку
                 </option>
@@ -142,16 +145,14 @@
                 >2. Какая сумма удовлетворит вашу цель?</h3
               >
 
-              <input
-                class="question__input-text"
-                type="text"
-                value="1 000 000"
-              />
+              <input class="question__input-text" type="text" value="" />
 
               <select
                 class="question__dropdown question__dropdown_with-input"
                 name="currency"
-              >
+                ><option value="0" hidden disabled selected
+                  >-- выберите валюту --</option
+                >
                 <option value="1">рублей</option>
                 <option value="2">долларов</option>
                 <option value="3">евро</option>
@@ -160,12 +161,14 @@
                 >3. В какой срок вы планируете достижение цели?</h3
               >
 
-              <input class="question__input-text" type="text" value="2" />
+              <input class="question__input-text" type="text" value="" />
 
               <select
                 class="question__dropdown question__dropdown_with-input"
                 name="currency"
-              >
+                ><option value="0" hidden disabled selected
+                  >-- выберите срок --</option
+                >
                 <option value="1">года</option>
                 <option value="2">месяца</option>
               </select>
@@ -176,16 +179,14 @@
               <h3 class="question__text"
                 >1. Какая ваша стартовая сумма инвестиций?</h3
               >
-              <input
-                class="question__input-text"
-                type="text"
-                value="1 000 000"
-              />
+              <input class="question__input-text" type="text" value="" />
 
               <select
                 class="question__dropdown question__dropdown_with-input"
                 name="currency"
-              >
+                ><option value="0" hidden disabled selected
+                  >-- выберите валюту --</option
+                >
                 <option value="1">рублей</option>
                 <option value="2">долларов</option>
                 <option value="3">евро</option>
@@ -198,17 +199,21 @@
               <select
                 class="question__dropdown question__dropdown_no-input"
                 name="first"
-              >
-                <option value="1" selected>каждый месяц</option>
+                ><option value="0" hidden disabled selected
+                  >-- выберите срок --</option
+                >
+                <option value="1">каждый месяц</option>
                 <option value="2">каждый квартал</option>
                 <option value="3">каждый год</option>
               </select>
-              <input class="question__input-text" type="text" value="10 000" />
+              <input class="question__input-text" type="text" value="" />
 
               <select
                 class="question__dropdown question__dropdown_with-input"
                 name="currency"
-              >
+                ><option value="0" hidden disabled selected
+                  >-- выберите валюту --</option
+                >
                 <option value="1">рублей</option>
                 <option value="2">долларов</option>
                 <option value="3">евро</option>
@@ -222,11 +227,13 @@
               <select
                 class="question__dropdown question__dropdown_no-input"
                 name="first"
-              >
+                ><option value="0" hidden disabled selected
+                  >-- выберите вариант --</option
+                >
                 <option value="1">Доходность: +8%; Просадка: -5%</option>
                 <option value="2">Доходность: +15%; Просадка: -10%</option>
                 <option value="3">Доходность: +20%; Просадка: -15%</option>
-                <option value="4" selected
+                <option value="4"
                   >Доходность: максимальная; Просадка: любая</option
                 >
               </select>
@@ -240,12 +247,14 @@
               <select
                 class="question__dropdown question__dropdown_no-input support-level"
                 name="first"
-              >
+                ><option value="0" hidden disabled selected
+                  >-- выберите вариант --</option
+                >
                 <option value="1"
                   >Решения принимаю только сам лично, даже какие ценные бумаги и
                   когда покупать</option
                 >
-                <option value="2" selected
+                <option value="2"
                   >Решения принимаю сам, но мне нужна аналитика и поддержка,
                   включая инвестиционные идеи</option
                 >
@@ -261,7 +270,6 @@
                 type="checkbox"
                 id="accompaniment"
                 class="question__help-checkbox"
-                checked
               />
               <label for="accompaniment" class="question__checkbox-text"
                 >Готов рассмотреть услугу индивидуального сопровождения от

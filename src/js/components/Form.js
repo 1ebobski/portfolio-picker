@@ -34,7 +34,7 @@ export default class Form {
   getAnswers() {
     this._answers = [];
     this._questionElements.forEach((question) =>
-      this._answers.push(question.selectedIndex)
+      this._answers.push(question.selectedIndex - 1)
     );
 
     this.helpRequestString = this.supportLevelElement.options[
