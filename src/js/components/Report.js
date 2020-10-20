@@ -44,6 +44,7 @@ export default class Report {
 
     this.reportAlternativeElement = document.createElement("div");
     this.reportAlternativeElement.classList.add("report__alternative");
+    this.reportAlternativeElement.style.display = "none";
 
     const reportAlternativeTitleElement = document.createElement("h3");
     reportAlternativeTitleElement.classList.add("report__alternative-title");
@@ -103,6 +104,8 @@ export default class Report {
   renderReport() {
     // update pie chart with new data
     this._updateGraph();
+
+    this.reportAlternativeElement.style.removeProperty = "display";
 
     // clean main and alternative portfolio elements from children to add new ones
     while (this.reportMainElement.firstChild) {
