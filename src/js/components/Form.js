@@ -17,6 +17,10 @@ export default class Form {
       ".question__input-text"
     );
     this.supportLevelElement = this.formElement.querySelector(".support-level");
+    this.helpCheckboxElement = this.formElement.querySelector(
+      ".question__help-checkbox"
+    );
+
     this._goalElement = this.formElement.querySelector(".goal");
     // event listener
     [...this.inputElements].forEach((element) =>
@@ -40,6 +44,9 @@ export default class Form {
     this.helpRequestString = this.supportLevelElement.options[
       this.supportLevelElement.selectedIndex
     ].text;
+
+    this.helpRequestTicked = this.helpCheckboxElement.checked;
+    // console.log(this.helpRequestTicked);
   }
 
   getInvestmentAmount() {
@@ -195,35 +202,35 @@ export default class Form {
     event.target.classList.toggle("question__label_not-selected");
   }
 
-  manageFilterState() {
-    const filterButtonsElementsList = [
-      ...this._filterElement.querySelectorAll(".question__label"),
-    ];
+  // manageFilterState() {
+  //   const filterButtonsElementsList = [
+  //     ...this._filterElement.querySelectorAll(".question__label"),
+  //   ];
 
-    switch (this.supportLevelElement.selectedIndex) {
-      case 0:
-        this._pressFilterButton(filterButtonsElementsList[0]);
-        this._unpressFilterButton(filterButtonsElementsList[1]);
-        this._pressFilterButton(filterButtonsElementsList[2]);
-        this._unpressFilterButton(filterButtonsElementsList[3]);
-        break;
-      case 1:
-        this._unpressFilterButton(filterButtonsElementsList[0]);
-        this._unpressFilterButton(filterButtonsElementsList[1]);
-        this._pressFilterButton(filterButtonsElementsList[2]);
-        this._unpressFilterButton(filterButtonsElementsList[3]);
-        break;
-      case 2:
-        this._unpressFilterButton(filterButtonsElementsList[0]);
-        this._pressFilterButton(filterButtonsElementsList[1]);
-        this._unpressFilterButton(filterButtonsElementsList[2]);
-        this._unpressFilterButton(filterButtonsElementsList[3]);
-        break;
-      case 3:
-        filterButtonsElementsList.forEach(this._unpressFilterButton);
-        break;
-    }
-  }
+  //   switch (this.supportLevelElement.selectedIndex) {
+  //     case 0:
+  //       this._pressFilterButton(filterButtonsElementsList[0]);
+  //       this._unpressFilterButton(filterButtonsElementsList[1]);
+  //       this._pressFilterButton(filterButtonsElementsList[2]);
+  //       this._unpressFilterButton(filterButtonsElementsList[3]);
+  //       break;
+  //     case 1:
+  //       this._unpressFilterButton(filterButtonsElementsList[0]);
+  //       this._unpressFilterButton(filterButtonsElementsList[1]);
+  //       this._pressFilterButton(filterButtonsElementsList[2]);
+  //       this._unpressFilterButton(filterButtonsElementsList[3]);
+  //       break;
+  //     case 2:
+  //       this._unpressFilterButton(filterButtonsElementsList[0]);
+  //       this._pressFilterButton(filterButtonsElementsList[1]);
+  //       this._unpressFilterButton(filterButtonsElementsList[2]);
+  //       this._unpressFilterButton(filterButtonsElementsList[3]);
+  //       break;
+  //     case 3:
+  //       filterButtonsElementsList.forEach(this._unpressFilterButton);
+  //       break;
+  //   }
+  // }
 
   _unpressFilterButton(element) {
     element.querySelector("input").checked = false;
