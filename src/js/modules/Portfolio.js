@@ -28,15 +28,23 @@ export default class Portfolio {
   }
 
   _matrixApplier(isCurrency) {
-    switch (this.helpRequestString) {
-      case "Решения принимаю только сам лично, даже какие ценные бумаги и когда покупать":
-        return isCurrency ? this.matrixCurFull : this.matrixRubFull;
-      case "Решения принимаю сам, но мне нужна аналитика и поддержка, включая инвестиционные идеи":
-        return isCurrency ? this.matrixCurRec : this.matrixRubRec;
-      case "Готов нечасто принимать инвестиционные решения и предоставить аналитическую работу профессионалам":
-        return isCurrency ? this.matrixCurLb : this.matrixRubLb;
-      case "Не готов ответить":
-        return isCurrency ? this.matrixCurNone : this.matrixRubNone;
+    if (this.helpRequestTicked) {
+      return isCurrency ? this.matrixCurLb : this.matrixRubLb;
+    } else {
+      switch (this.helpRequestString) {
+        case "Решения принимаю только сам лично, даже какие ценные бумаги и когда покупать":
+          return isCurrency ? this.matrixCurNone : this.matrixRubNone;
+          break;
+        case "Решения принимаю сам, но мне нужна аналитика и поддержка, включая инвестиционные идеи":
+          return isCurrency ? this.matrixCurRec : this.matrixRubRec;
+          break;
+        case "Готов нечасто принимать инвестиционные решения и предоставить аналитическую работу профессионалам":
+          return isCurrency ? this.matrixCurReady : this.matrixRubReady;
+          break;
+        case "Не готов ответить":
+          return isCurrency ? this.matrixCurFull : this.matrixRubFull;
+          break;
+      }
     }
   }
 
@@ -49,13 +57,16 @@ export default class Portfolio {
     currency,
     // filterList,
     helpRequestString,
+    helpRequestTicked,
   }) {
     this.currency = currency;
     // this.filterList = filterList;
     this.investmentAmount = investmentAmount;
     this.investmentAmountRubbles = investmentAmountRubbles;
     this.previousShare = 0;
+
     this.helpRequestString = helpRequestString;
+    this.helpRequestTicked = helpRequestTicked;
 
     // const filterArray = [];
     // this.filterList.forEach((element) =>

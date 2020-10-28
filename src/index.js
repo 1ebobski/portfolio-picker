@@ -1,42 +1,48 @@
 // for matrix convertation from wrong json (got from csv to json converter) to right one
 
-  // import { RAW_RUB_LB } from "./js/constants/raw-matrixes/raw_rub_lb.js";
-  // import { RAW_RUB_FULL } from "./js/constants/raw-matrixes/raw_rub_full.js";
-  // import { RAW_RUB_NONE } from "./js/constants/raw-matrixes/raw_rub_none.js";
-  // import { RAW_RUB_REC } from "./js/constants/raw-matrixes/raw_rub_rec.js";
-  // import { RAW_CUR_LB } from "./js/constants/raw-matrixes/raw_cur_lb.js";
-  // import { RAW_CUR_FULL } from "./js/constants/raw-matrixes/raw_cur_full.js";
-  // import { RAW_CUR_NONE } from "./js/constants/raw-matrixes/raw_cur_none.js";
-  // import { RAW_CUR_REC } from "./js/constants/raw-matrixes/raw_cur_rec.js";
+// import { RAW_RUB_LB } from "./js/constants/raw-matrixes/raw_rub_lb.js";
+// import { RAW_RUB_FULL } from "./js/constants/raw-matrixes/raw_rub_full.js";
+// import { RAW_RUB_NONE } from "./js/constants/raw-matrixes/raw_rub_none.js";
+// import { RAW_RUB_READY } from "./js/constants/raw-matrixes/raw_rub_ready.js";
+// import { RAW_RUB_REC } from "./js/constants/raw-matrixes/raw_rub_rec.js";
+// import { RAW_CUR_LB } from "./js/constants/raw-matrixes/raw_cur_lb.js";
+// import { RAW_CUR_FULL } from "./js/constants/raw-matrixes/raw_cur_full.js";
+// import { RAW_CUR_NONE } from "./js/constants/raw-matrixes/raw_cur_none.js";
+// import { RAW_CUR_READY } from "./js/constants/raw-matrixes/raw_cur_ready.js";
+// import { RAW_CUR_REC } from "./js/constants/raw-matrixes/raw_cur_rec.js";
 
-  // import { matrixConverter } from "./js/utils/matrixConverter.js";
+// import { matrixConverter } from "./js/utils/matrixConverter.js";
 
-  // const matrixNamesArray = [
-  //   "MATRIX_CUR_FULL",
-  //   "MATRIX_CUR_LB",
-  //   "MATRIX_CUR_NONE",
-  //   "MATRIX_CUR_REC",
-  //   "MATRIX_RUB_FULL",
-  //   "MATRIX_RUB_LB",
-  //   "MATRIX_RUB_NONE",
-  //   "MATRIX_RUB_REC",
-  // ];
+// const matrixNamesArray = [
+//   "MATRIX_CUR_FULL",
+//   "MATRIX_CUR_LB",
+//   "MATRIX_CUR_NONE",
+//   "MATRIX_CUR_READY",
+//   "MATRIX_CUR_REC",
+//   "MATRIX_RUB_FULL",
+//   "MATRIX_RUB_LB",
+//   "MATRIX_RUB_NONE",
+//   "MATRIX_RUB_READY",
+//   "MATRIX_RUB_REC",
+// ];
 
-  // [
-  //   RAW_CUR_FULL,
-  //   RAW_CUR_LB,
-  //   RAW_CUR_NONE,
-  //   RAW_CUR_REC,
-  //   RAW_RUB_FULL,
-  //   RAW_RUB_LB,
-  //   RAW_RUB_NONE,
-  //   RAW_RUB_REC,
-  // ].forEach((matrix, index) =>
-  //   console.log(
-  //     `export const ${matrixNamesArray[index]} =`,
-  //     JSON.stringify(matrixConverter(matrix))
-  //   )
-  // );
+// [
+//   RAW_CUR_FULL,
+//   RAW_CUR_LB,
+//   RAW_CUR_NONE,
+//   RAW_CUR_READY,
+//   RAW_CUR_REC,
+//   RAW_RUB_FULL,
+//   RAW_RUB_LB,
+//   RAW_RUB_NONE,
+//   RAW_RUB_READY,
+//   RAW_RUB_REC,
+// ].forEach((matrix, index) =>
+//   console.log(
+//     `export const ${matrixNamesArray[index]} =`,
+//     JSON.stringify(matrixConverter(matrix))
+//   )
+// );
 
 //import logo and qr code images
 import qrCode from "./images/qr-code.jpg";
@@ -61,10 +67,12 @@ import Terminal from "./js/components/Terminal.js";
 import { MATRIX_CUR_FULL } from "./js/constants/matrixes/matrix_cur_full.js";
 import { MATRIX_CUR_LB } from "./js/constants/matrixes/matrix_cur_lb.js";
 import { MATRIX_CUR_NONE } from "./js/constants/matrixes/matrix_cur_none.js";
+import { MATRIX_CUR_READY } from "./js/constants/matrixes/matrix_cur_ready.js";
 import { MATRIX_CUR_REC } from "./js/constants/matrixes/matrix_cur_rec.js";
 import { MATRIX_RUB_FULL } from "./js/constants/matrixes/matrix_rub_full.js";
 import { MATRIX_RUB_LB } from "./js/constants/matrixes/matrix_rub_lb.js";
 import { MATRIX_RUB_NONE } from "./js/constants/matrixes/matrix_rub_none.js";
+import { MATRIX_RUB_READY } from "./js/constants/matrixes/matrix_rub_ready.js";
 import { MATRIX_RUB_REC } from "./js/constants/matrixes/matrix_rub_rec.js";
 
 import { MONEY_SCALE, RISK_MATRIX } from "./js/constants/scales.js";
@@ -133,10 +141,12 @@ const portfolio = new Portfolio({
   matrixCurFull: MATRIX_CUR_FULL,
   matrixCurLb: MATRIX_CUR_LB,
   matrixCurNone: MATRIX_CUR_NONE,
+  matrixCurReady: MATRIX_CUR_READY,
   matrixCurRec: MATRIX_CUR_REC,
   matrixRubFull: MATRIX_RUB_FULL,
   matrixRubLb: MATRIX_RUB_LB,
   matrixRubNone: MATRIX_RUB_NONE,
+  matrixRubReady: MATRIX_RUB_READY,
   matrixRubRec: MATRIX_RUB_REC,
 });
 
@@ -170,7 +180,7 @@ const handleChanges = () => {
   form.getInvestmentAmount();
   // form.getFilter();
   form.assignRiskProfile();
-  form.assignPortfolioKeys(); 
+  form.assignPortfolioKeys();
   form.assignDueDate();
 
   // update portfolio with required data from form component
@@ -183,6 +193,7 @@ const handleChanges = () => {
     currency: form.currency,
     // filterList: form.filterList,
     helpRequestString: form.helpRequestString,
+    helpRequestTicked: form.helpRequestTicked,
   });
 
   // update report with required data from form and portfolio components
@@ -224,9 +235,9 @@ form.formElement.addEventListener("input", (event) => {
 });
 
 // add eventlistener to support level element (5th question) and implements a logic that autoselects corresponding filters
-form.supportLevelElement.addEventListener("input", () => {
-  form.manageFilterState();
-});
+// form.supportLevelElement.addEventListener("input", () => {
+//   form.manageFilterState();
+// });
 
 // add click event listener to form element that works only when clicked on filter buttons and updates filters' state
 form.formElement.addEventListener("click", (event) => {
