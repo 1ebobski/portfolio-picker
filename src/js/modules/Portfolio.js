@@ -7,10 +7,12 @@ export default class Portfolio {
     matrixCurFull,
     matrixCurLb,
     matrixCurNone,
+    matrixCurReady,
     matrixCurRec,
     matrixRubFull,
     matrixRubLb,
     matrixRubNone,
+    matrixRubReady,
     matrixRubRec,
   }) {
     this.catalogue = catalogue;
@@ -20,28 +22,35 @@ export default class Portfolio {
     this.matrixCurFull = matrixCurFull;
     this.matrixCurLb = matrixCurLb;
     this.matrixCurNone = matrixCurNone;
+    this.matrixCurReady = matrixCurReady;
     this.matrixCurRec = matrixCurRec;
     this.matrixRubFull = matrixRubFull;
     this.matrixRubLb = matrixRubLb;
     this.matrixRubNone = matrixRubNone;
+    this.matrixRubReady = matrixRubReady;
     this.matrixRubRec = matrixRubRec;
   }
 
   _matrixApplier(isCurrency) {
     if (this.helpRequestTicked) {
+      console.log("LB");
       return isCurrency ? this.matrixCurLb : this.matrixRubLb;
     } else {
       switch (this.helpRequestString) {
         case "Решения принимаю только сам лично, даже какие ценные бумаги и когда покупать":
+          console.log("NONE");
           return isCurrency ? this.matrixCurNone : this.matrixRubNone;
           break;
         case "Решения принимаю сам, но мне нужна аналитика и поддержка, включая инвестиционные идеи":
+          console.log("REC");
           return isCurrency ? this.matrixCurRec : this.matrixRubRec;
           break;
         case "Готов нечасто принимать инвестиционные решения и предоставить аналитическую работу профессионалам":
+          console.log("READY");
           return isCurrency ? this.matrixCurReady : this.matrixRubReady;
           break;
         case "Не готов ответить":
+          console.log("FULL");
           return isCurrency ? this.matrixCurFull : this.matrixRubFull;
           break;
       }
