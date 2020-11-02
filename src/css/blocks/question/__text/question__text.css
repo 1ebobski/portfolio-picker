@@ -1,6 +1,6 @@
 @media screen {
   .question__text {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: bold;
     margin-bottom: 8px;
   }
@@ -8,7 +8,7 @@
 
 @media print {
   .question__text {
-    font-weight: bold;
+    font-size: 1rem;
     margin-bottom: 4px;
-  }
+    }
 }
