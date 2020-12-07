@@ -166,7 +166,7 @@ exchangeRatesApi
     // report.updatePrices(tempRates);
     form.updatePrices(response.rates);
     report.updatePrices(response.rates);
-    handleChanges();
+    // handleChanges();
   })
   .catch((error) => {
     console.log(error);
@@ -223,16 +223,16 @@ refreshButton.addEventListener("click", () => {
 // add eventlistener to form element, handles changes only if input was via checkbox dropdown or text input
 // AND investment amount in rubles is more than 10000 (Portfolio can find portfolio for lower sums of money,
 // but either will get and error or it's not feasible in terms of investing)
-form.formElement.addEventListener("input", (event) => {
-  if (
-    (event.target.classList.contains("question__dropdown") ||
-      event.target.classList.contains("question__input-text") ||
-      event.target.classList.contains("question__checkbox")) &&
-    form.investmentAmountRubbles >= 10000
-  ) {
-    handleChanges();
-  }
-});
+// form.formElement.addEventListener("input", (event) => {
+//   if (
+//     (event.target.classList.contains("question__dropdown") ||
+//       event.target.classList.contains("question__input-text") ||
+//       event.target.classList.contains("question__checkbox")) &&
+//     form.investmentAmountRubbles >= 10000
+//   ) {
+//     handleChanges();
+//   }
+// });
 
 // add eventlistener to support level element (5th question) and implements a logic that autoselects corresponding filters
 // form.supportLevelElement.addEventListener("input", () => {

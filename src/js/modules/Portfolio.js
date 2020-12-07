@@ -33,24 +33,24 @@ export default class Portfolio {
 
   _matrixApplier(isCurrency) {
     if (this.helpRequestTicked) {
-      console.log("LB");
+      // console.log("LB");
       return isCurrency ? this.matrixCurLb : this.matrixRubLb;
     } else {
       switch (this.helpRequestString) {
         case "Решения принимаю только сам лично, даже какие ценные бумаги и когда покупать":
-          console.log("NONE");
+          // console.log("NONE");
           return isCurrency ? this.matrixCurNone : this.matrixRubNone;
           break;
         case "Решения принимаю сам, но мне нужна аналитика и поддержка, включая инвестиционные идеи":
-          console.log("REC");
+          // console.log("REC");
           return isCurrency ? this.matrixCurRec : this.matrixRubRec;
           break;
         case "Готов нечасто принимать инвестиционные решения и предоставить аналитическую работу профессионалам":
-          console.log("READY");
+          // console.log("READY");
           return isCurrency ? this.matrixCurReady : this.matrixRubReady;
           break;
         case "Не готов ответить":
-          console.log("FULL");
+          // console.log("FULL");
           return isCurrency ? this.matrixCurFull : this.matrixRubFull;
           break;
       }
