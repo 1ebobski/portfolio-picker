@@ -105,7 +105,7 @@ export default class Report {
     // update pie chart with new data
     this._updateGraph();
 
-    this.reportAlternativeElement.style.removeProperty = "display";
+    this.reportAlternativeElement.style.removeProperty("display");
 
     // clean main and alternative portfolio elements from children to add new ones
     while (this.reportMainElement.firstChild) {

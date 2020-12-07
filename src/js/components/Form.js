@@ -101,6 +101,8 @@ export default class Form {
       }
     });
 
+    // console.log(this._goalElement);
+
     this.riskProfiles = [
       +this._riskMatrix[this._answers[6]][goalIndex],
       +this._riskMatrix[this._answers[6]][goalIndex] < 7
