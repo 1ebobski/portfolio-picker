@@ -222,11 +222,9 @@ refreshButton.addEventListener("click", () => {
   handleChanges();
 });
 
-printButton.addEventListener("click", () => {
+printButton.addEventListener("click", (event) => {
+  event.preventDefault();
   form.getClientId();
-  console.log(form.clientId);
-
-  // console.log(form.clientId);
 
   if (report.reportIsRendered && form.clientId) {
     window.print();
