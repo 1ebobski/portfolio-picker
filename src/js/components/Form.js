@@ -21,6 +21,10 @@ export default class Form {
       ".question__help-checkbox"
     );
 
+    this.clientIdInputElement = this.formElement.querySelector(
+      ".form__client-id-input"
+    );
+
     this._goalElement = this.formElement.querySelector(".goal");
     // event listener
     [...this.inputElements].forEach((element) =>
@@ -70,12 +74,17 @@ export default class Form {
     };
   }
 
-  getFilter() {
-    this.filterList = [...this._filterElement.querySelectorAll("label")]
-      .filter((element) => {
-        return element.querySelector("input").checked;
-      })
-      .map((element) => element.innerText);
+  // getFilter() {
+  //   this.filterList = [...this._filterElement.querySelectorAll("label")]
+  //     .filter((element) => {
+  //       return element.querySelector("input").checked;
+  //     })
+  //     .map((element) => element.innerText);
+  // }
+
+  getClientId() {
+    this.clientId = this.clientIdInputElement.value;
+    
   }
 
   assignRiskProfile() {

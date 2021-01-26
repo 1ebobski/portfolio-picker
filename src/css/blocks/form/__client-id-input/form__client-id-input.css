@@ -1,0 +1,19 @@
+@media screen {
+  .form__client-id-input {
+    width: 95%;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid #cfd8dc;
+    border-radius: 4px;
+    padding-left: 8px;
+    margin: 0 auto 20px;
+  }
+}
+
+@media print {
+  .form__client-id-input {
+    display: none;
+    /* border: none;
+    padding-left: 20px; */
+  }
+}
