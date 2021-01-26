@@ -92,6 +92,8 @@ import { TERMINAL_CONTENT } from "./js/constants/terminal-content.js";
 
 // select dom elements for components as either element or element container + refresh button
 const refreshButton = document.querySelector(".form__refresh-button");
+const printButton = document.querySelector(".form__print-button");
+
 const mainElement = document.querySelector(".main");
 const formElement = document.querySelector(".form");
 
@@ -218,6 +220,19 @@ const handleChanges = () => {
 // add eventlisteneer to refresh button to get new portfolio rendered
 refreshButton.addEventListener("click", () => {
   handleChanges();
+});
+
+printButton.addEventListener("click", () => {
+  form.getClientId();
+  console.log(form.clientId);
+
+  // console.log(form.clientId);
+
+  if (report.reportIsRendered && form.clientId) {
+    window.print();
+  } else {
+    alert("Нет сгенерированного портфеля или id клиента!");
+  }
 });
 
 // add eventlistener to form element, handles changes only if input was via checkbox dropdown or text input

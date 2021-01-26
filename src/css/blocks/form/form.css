@@ -1,5 +1,7 @@
 @import url("./__refresh-button/form__refresh-button.css");
 @import url("./__button-container/form__button-container.css");
+@import url("./__client-id-input/form__client-id-input.css");
+@import url("./__print-button/form__print-button.css");
 
 @media screen {
   .form {
