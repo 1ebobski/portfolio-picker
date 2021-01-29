@@ -4,6 +4,7 @@ import "chartjs-plugin-labels";
 export default class Report {
   constructor({ container, openBrokerLogo }) {
     this.container = container;
+    this.reportIsRendered = false;
 
     this.openBrokerLogo = openBrokerLogo;
   }
@@ -103,6 +104,7 @@ export default class Report {
 
   renderReport() {
     // update pie chart with new data
+
     this._updateGraph();
 
     this.reportAlternativeElement.style.removeProperty("display");
@@ -161,6 +163,8 @@ export default class Report {
         );
       }
     });
+
+    this.reportIsRendered = true;
   }
 
   updatePrices(prices) {
