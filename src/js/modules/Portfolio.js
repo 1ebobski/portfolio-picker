@@ -152,7 +152,10 @@ export default class Portfolio {
     // get all options with corresponding key
     const portfolioOption = portfolioMatrix[key.substring(1, 4)];
 
+    // console.log(portfolioOption);
+
     // select one random option from portfolioOption
+    // console.log(portfolioOption);
     const portfolioSelection =
       portfolioOption.portfolios[
         Math.floor(Math.random() * portfolioOption.portfolios.length)
