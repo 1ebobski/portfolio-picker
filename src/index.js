@@ -45,7 +45,6 @@
 // );
 
 //import logo and qr code images
-import qrCode from "./images/qr-code.jpg";
 import openBrokerLogo from "./images/open-logo.svg";
 import humanIcon from "./images/human-icon.svg";
 import medalIcon from "./images/medal-icon.svg";
