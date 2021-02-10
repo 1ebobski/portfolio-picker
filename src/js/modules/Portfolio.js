@@ -37,19 +37,19 @@ export default class Portfolio {
       return isCurrency ? this.matrixCurLb : this.matrixRubLb;
     } else {
       switch (this.helpRequestString) {
-        case "Решения принимаю только сам лично, даже какие ценные бумаги и когда покупать":
+        case "Сопровождение не требуется, торгую самостоятельно":
           // console.log("NONE");
           return isCurrency ? this.matrixCurNone : this.matrixRubNone;
           break;
-        case "Решения принимаю сам, но мне нужна аналитика и поддержка, включая инвестиционные идеи":
+        case "Нужна аналитика и поддержка, включая инвестиционные идеи, но решения принимаю самостоятельно":
           // console.log("REC");
           return isCurrency ? this.matrixCurRec : this.matrixRubRec;
           break;
-        case "Готов нечасто принимать инвестиционные решения и предоставить аналитическую работу профессионалам":
+        case "Готов доверить инвестиционные решения профессиональным управляющим":
           // console.log("READY");
           return isCurrency ? this.matrixCurReady : this.matrixRubReady;
           break;
-        case "Не готов ответить":
+        case "Готов рассмотреть все варианты сопровождения":
           // console.log("FULL");
           return isCurrency ? this.matrixCurFull : this.matrixRubFull;
           break;
@@ -108,6 +108,8 @@ export default class Portfolio {
 
     // console.log(this.selectedPapers);
 
+    // console.log(this.selectedPapers);Сопровождение не требуется, торгую самостоятельно
+
     this.portfolio = this.selectedPapers.map((element) =>
       this._composePortfolio(element)
     );
@@ -119,22 +121,28 @@ export default class Portfolio {
     // hotfix: before share sum could be less that 100 due to minAMount filtering in _composePortfolio()
 
     this.portfolio.forEach((portfolio) => {
-      const sharesSum = portfolio.reduce((acc, cur) => {
-        // console.log(acc, cur);
-        return acc + cur.forDiagram;
-      }, 0);
+      // console.log(portfolio);
 
-      if (sharesSum < 100) {
-        if (portfolio.length > 1) {
-          portfolio[portfolio.length - 1].forDiagram =
-            100 - portfolio[0].forDiagram;
-          portfolio[portfolio.length - 1].factAmount =
-            (this.investmentAmount *
-              portfolio[portfolio.length - 1].forDiagram) /
-            100;
-        } else {
-          portfolio[0].forDiagram = 100;
-          portfolio[0].factAmount = this.investmentAmount;
+      if (portfolio.length > 0) {
+        const sharesSum = portfolio.reduce((acc, cur) => {
+          // console.log(acc, cur);
+          return acc + cur.forDiagram;
+        }, 0);
+
+        // console.log(sharesSum);
+
+        if (sharesSum < 100) {
+          if (portfolio.length > 1) {
+            portfolio[portfolio.length - 1].forDiagram =
+              100 - portfolio[0].forDiagram;
+            portfolio[portfolio.length - 1].factAmount =
+              (this.investmentAmount *
+                portfolio[portfolio.length - 1].forDiagram) /
+              100;
+          } else {
+            portfolio[0].forDiagram = 100;
+            portfolio[0].factAmount = this.investmentAmount;
+          }
         }
       }
       // console.log(sharesSum);
@@ -150,6 +158,8 @@ export default class Portfolio {
 
   _selectSecurities(key, portfolioMatrix) {
     // get all options with corresponding key
+    // console.log(key.substring(1, 4), portfolioMatrix);
+
     const portfolioOption = portfolioMatrix[key.substring(1, 4)];
 
     // console.log(portfolioOption);
@@ -160,6 +170,8 @@ export default class Portfolio {
       portfolioOption.portfolios[
         Math.floor(Math.random() * portfolioOption.portfolios.length)
       ];
+
+    // console.log(portfolioSelection);
 
     // select option with corresponding risk profile (number)
     const selectedCatalogueCode = portfolioSelection[key.charAt(0) - 1];
