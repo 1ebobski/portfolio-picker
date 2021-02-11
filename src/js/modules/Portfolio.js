@@ -108,8 +108,6 @@ export default class Portfolio {
 
     // console.log(this.selectedPapers);
 
-    // console.log(this.selectedPapers);Сопровождение не требуется, торгую самостоятельно
-
     this.portfolio = this.selectedPapers.map((element) =>
       this._composePortfolio(element)
     );
