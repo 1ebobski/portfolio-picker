@@ -1,0 +1,6 @@
+.login-form__error {
+  display: none;
+  color: red;
+  font-size: 0.5rem;
+  margin-top: 7px;
+}

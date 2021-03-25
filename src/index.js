@@ -51,16 +51,17 @@ import medalIcon from "./images/medal-icon.svg";
 import presentIcon from "./images/present-icon.svg";
 import cardIcon from "./images/card-icon.svg";
 
-// console.log(logo);
-
 // import styles, components and modules
 import "./index.css";
+import Header from "./js/components/Header.js";
+import LoginForm from "./js/components/LoginForm.js";
 import Form from "./js/components/Form.js";
 import Portfolio from "./js/modules/Portfolio.js";
 import ExchangeRatesApi from "./js/modules/ExchangeRatesApi.js";
 import Report from "./js/components/Report.js";
 import Recommendation from "./js/components/Recommendation.js";
 import Terminal from "./js/components/Terminal.js";
+import Footer from "./js/components/Footer.js";
 
 // import various scales, matrixes and dicts for correct portfolio selection
 import { MATRIX_CUR_FULL } from "./js/constants/matrixes/matrix_cur_full.js";
@@ -89,20 +90,28 @@ import {
 } from "./js/constants/exchange-rates-api-url.js";
 import { TERMINAL_CONTENT } from "./js/constants/terminal-content.js";
 
-// select dom elements for components as either element or element container + refresh button
-const refreshButton = document.querySelector(".form__refresh-button");
-const printButton = document.querySelector(".form__print-button");
+const rootElement = document.querySelector(".root");
 
-const mainElement = document.querySelector(".main");
-const formElement = document.querySelector(".form");
+const mainElement = document.createElement("main");
+mainElement.classList.add("main");
+
+const loginForm = new LoginForm({
+  container: rootElement,
+});
+
+const header = new Header({
+  container: rootElement,
+  openBrokerLogo,
+});
 
 // create components instances passing required props regardless user question responses
 const form = new Form({
-  formElement: formElement,
+  container: mainElement,
   moneyScale: MONEY_SCALE,
   riskMatrix: RISK_MATRIX,
   // openBrokerLogo: openBrokerLogo,
 });
+
 const report = new Report({
   container: mainElement,
   openBrokerLogo,
@@ -122,6 +131,11 @@ const recommendation = new Recommendation({
 const terminal = new Terminal({
   container: mainElement,
   terminalContent: TERMINAL_CONTENT,
+  openBrokerLogo,
+});
+
+const footer = new Footer({
+  container: rootElement,
   openBrokerLogo,
 });
 
@@ -154,6 +168,15 @@ const portfolio = new Portfolio({
 // creates filter element in form component
 // form.insertLogo();
 // form.createFilter();
+
+header.createHeader();
+
+loginForm.createLoginForm();
+
+// rootElement.appendChild(mainElement);
+footer.createFooter();
+
+// form.createFormSection();
 report.createReportSection();
 recommendation.createRecommendationsSection();
 
@@ -197,6 +220,8 @@ const handleChanges = () => {
     helpRequestTicked: form.helpRequestTicked,
   });
 
+  // console.log(portfolio.portfolio);
+
   // update report with required data from form and portfolio components
   report.updateReportData({
     portfolio: portfolio.portfolio,
@@ -217,11 +242,11 @@ const handleChanges = () => {
 };
 
 // add eventlisteneer to refresh button to get new portfolio rendered
-refreshButton.addEventListener("click", () => {
+form.refreshButton.addEventListener("click", () => {
   handleChanges();
 });
 
-printButton.addEventListener("click", (event) => {
+form.printButton.addEventListener("click", (event) => {
   event.preventDefault();
   form.getClientId();
 
@@ -252,6 +277,12 @@ printButton.addEventListener("click", (event) => {
 // });
 
 // add click event listener to form element that works only when clicked on filter buttons and updates filters' state
+loginForm.loginFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+  rootElement.removeChild(loginForm.loginFormElement);
+  rootElement.insertBefore(mainElement, footer.footerElement);
+});
+
 form.formElement.addEventListener("click", (event) => {
   if (event.target.classList.contains("question__label")) {
     form.updateFilter(event);
