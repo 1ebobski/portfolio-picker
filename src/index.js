@@ -85,8 +85,7 @@ import { CATALOGUE } from "./js/constants/catalogue.js";
 import {
   BASE_URL,
   METHOD,
-  CURRENCIES,
-  BASE_CURRENCY,
+  APP_ID,
 } from "./js/constants/exchange-rates-api-url.js";
 import { TERMINAL_CONTENT } from "./js/constants/terminal-content.js";
 
@@ -143,8 +142,7 @@ const footer = new Footer({
 const exchangeRatesApi = new ExchangeRatesApi({
   baseUrl: BASE_URL,
   method: METHOD,
-  currenciesList: CURRENCIES,
-  baseCurrency: BASE_CURRENCY,
+  appId: APP_ID,
 });
 
 // create portfolio instance, used in portfolio selection process
@@ -186,10 +184,16 @@ recommendation.createRecommendationsSection();
 exchangeRatesApi
   .getRates()
   .then((response) => {
+    // console.log(response.rates);
+    const usdPrice = 1 / response.rates.RUB;
+    const euPrice = response.rates.EUR * usdPrice;
+    const rates = { EUR: euPrice, USD: usdPrice };
+
+    // console.log(rates);
     // const tempRates = { EUR: 0.0125875781, USD: 0.0142063406 };
     // report.updatePrices(tempRates);
-    form.updatePrices(response.rates);
-    report.updatePrices(response.rates);
+    form.updatePrices(rates);
+    report.updatePrices(rates);
     // handleChanges();
   })
   .catch((error) => {
