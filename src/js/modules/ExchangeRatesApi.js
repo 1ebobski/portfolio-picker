@@ -4,9 +4,7 @@ export default class ExchangeRatesApi {
   }
 
   getRates() {
-    const url = `${this._options.baseUrl}${this._options.method}?base=${
-      this._options.baseCurrency
-    }&symbols=${this._options.currenciesList.join(",")}`;
+    const url = `${this._options.baseUrl}${this._options.method}?app_id=${this._options.appId}`;
 
     return fetch(
       url

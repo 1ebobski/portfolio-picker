@@ -4,8 +4,12 @@ export default class Form {
 
     this.createFormSection();
 
-    this.refreshButton = this.formSectionElement.querySelector(".form__refresh-button");
-    this.printButton = this.formSectionElement.querySelector(".form__print-button");
+    this.refreshButton = this.formSectionElement.querySelector(
+      ".form__refresh-button"
+    );
+    this.printButton = this.formSectionElement.querySelector(
+      ".form__print-button"
+    );
 
     // assign
     this.formElement = this.formSectionElement.querySelector(".form");
