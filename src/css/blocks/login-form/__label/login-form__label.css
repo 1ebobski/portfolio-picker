@@ -1,0 +1,22 @@
+.login-form__label {
+  transition: all 0.2s;
+  font-size: 0.8125rem;
+  color: #999999;
+  position: relative;
+  top: 12px;
+}
+.login-form__input:placeholder-shown + .login-form__label {
+  max-width: 66.66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transform-origin: left bottom;
+
+  transform: translate(0, 0.75rem) scale(1.44);
+}
+.login-form__input:not(:placeholder-shown) + .login-form__label,
+.login-form__input:focus + .login-form__label {
+  top: 0;
+  transform: translate(0, 0) scale(1);
+}
