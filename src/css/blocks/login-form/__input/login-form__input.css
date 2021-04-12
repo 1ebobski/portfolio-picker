@@ -1,0 +1,15 @@
+.login-form__input {
+  transition: all 0.2s;
+  height: 22px;
+  padding: 4px 0;
+  font-size: 0.8125rem;
+  border: 0;
+  border-bottom: 1px solid #3369f3;
+}
+
+.login-form__input:focus {
+  outline: 0;
+}
+.login-form__input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}

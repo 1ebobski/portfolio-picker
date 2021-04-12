@@ -1,0 +1,11 @@
+.login-form__background {
+  position: fixed;
+  top: 0;
+
+  /* scroll-; */
+
+  background-color: black;
+  opacity: 0.9;
+  width: 100vw;
+  height: 100vh;
+}

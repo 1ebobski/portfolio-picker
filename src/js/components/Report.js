@@ -18,9 +18,9 @@ export default class Report {
     this.reportSection = document.createElement("section");
     this.reportSection.classList.add("section");
 
-    const openBrokerLogo = document.createElement("img");
-    openBrokerLogo.classList.add("section__logo");
-    openBrokerLogo.src = this.openBrokerLogo;
+    const openBrokerLogoElement = document.createElement("img");
+    openBrokerLogoElement.classList.add("section__logo");
+    openBrokerLogoElement.src = this.openBrokerLogo;
 
     const sectionTitleElement = document.createElement("h2");
     sectionTitleElement.classList.add(
@@ -95,7 +95,7 @@ export default class Report {
 
     reportPreviewElement.appendChild(this.portfolioTotalElement);
 
-    this.reportSection.appendChild(openBrokerLogo);
+    this.reportSection.appendChild(openBrokerLogoElement);
     this.reportSection.appendChild(sectionTitleElement);
     this.reportSection.appendChild(reportElement);
 
