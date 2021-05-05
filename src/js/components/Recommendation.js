@@ -50,9 +50,9 @@ export default class Recommendation {
     this.recommendationsSectionElement = document.createElement("section");
     this.recommendationsSectionElement.classList.add("section");
 
-    const openBrokerLogo = document.createElement("img");
-    openBrokerLogo.classList.add("section__logo");
-    openBrokerLogo.src = this.openBrokerLogo;
+    const openBrokerLogoElement = document.createElement("img");
+    openBrokerLogoElement.classList.add("section__logo");
+    openBrokerLogoElement.src = this.openBrokerLogo;
 
     const sectionTitleElement = document.createElement("h2");
     sectionTitleElement.classList.add("section__title");
@@ -81,7 +81,7 @@ export default class Recommendation {
       return recommendationElement;
     };
 
-    this.recommendationsSectionElement.appendChild(openBrokerLogo);
+    this.recommendationsSectionElement.appendChild(openBrokerLogoElement);
     this.recommendationsSectionElement.appendChild(sectionTitleElement);
     this.recommendationsSectionElement.appendChild(this.recommendationsElement);
 

@@ -46,6 +46,7 @@
 
 //import logo and qr code images
 import openBrokerLogo from "./images/open-logo.svg";
+import graphImage from "./images/graph.svg";
 import humanIcon from "./images/human-icon.svg";
 import medalIcon from "./images/medal-icon.svg";
 import presentIcon from "./images/present-icon.svg";
@@ -108,7 +109,8 @@ const form = new Form({
   container: mainElement,
   moneyScale: MONEY_SCALE,
   riskMatrix: RISK_MATRIX,
-  // openBrokerLogo: openBrokerLogo,
+  openBrokerLogo,
+  graphImage,
 });
 
 const report = new Report({
@@ -169,12 +171,14 @@ const portfolio = new Portfolio({
 
 header.createHeader();
 
-loginForm.createLoginForm();
+// loginForm.createLoginForm();
 
 // rootElement.appendChild(mainElement);
 footer.createFooter();
 
-// form.createFormSection();
+rootElement.insertBefore(mainElement, footer.footerElement);
+
+form.createFormSection();
 report.createReportSection();
 recommendation.createRecommendationsSection();
 
@@ -246,11 +250,11 @@ const handleChanges = () => {
 };
 
 // add eventlisteneer to refresh button to get new portfolio rendered
-form.refreshButton.addEventListener("click", () => {
+form.refreshButtonElement.addEventListener("click", () => {
   handleChanges();
 });
 
-form.printButton.addEventListener("click", (event) => {
+form.printButtonElement.addEventListener("click", (event) => {
   event.preventDefault();
   form.getClientId();
 
@@ -281,11 +285,11 @@ form.printButton.addEventListener("click", (event) => {
 // });
 
 // add click event listener to form element that works only when clicked on filter buttons and updates filters' state
-loginForm.loginFormElement.addEventListener("submit", (event) => {
-  event.preventDefault();
-  rootElement.removeChild(loginForm.loginFormElement);
-  rootElement.insertBefore(mainElement, footer.footerElement);
-});
+// loginForm.loginFormElement.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   rootElement.removeChild(loginForm.loginFormElement);
+//   rootElement.insertBefore(mainElement, footer.footerElement);
+// });
 
 form.formElement.addEventListener("click", (event) => {
   if (event.target.classList.contains("question__label")) {
