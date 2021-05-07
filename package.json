@@ -1,23 +1,22 @@
 {
   "name": "tarif-selector",
-  "homepage": "https://1ebobski.github.io/pp-dev/",
+  "homepage": "https://1ebobski.github.io/portfolio-picker/",
   "version": "0.0.1",
   "description": "Project for Open broker",
   "main": "./src/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "cross-env NODE_ENV=production gh-pages -d dist"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1ebobski/pp-dev.git"
+    "url": "git+https://github.com/1ebobski/portfolio-picker.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1ebobski/pp-dev/issues"
+    "url": "https://github.com/1ebobski/portfolio-picker/issues"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -30,7 +29,6 @@
     "css-loader": "^3.6.0",
     "cssnano": "^4.1.10",
     "file-loader": "^5.1.0",
-    "gh-pages": "~2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.8.2",
@@ -43,9 +41,6 @@
     "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "^4.10.0",
     "babel-polyfill": "^6.26.0",
     "chart.js": "^2.9.3",
     "chartjs-plugin-labels": "^1.1.0",

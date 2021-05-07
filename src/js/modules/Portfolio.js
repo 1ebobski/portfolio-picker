@@ -77,15 +77,6 @@ export default class Portfolio {
     this.helpRequestString = helpRequestString;
     this.helpRequestTicked = helpRequestTicked;
 
-    // const filterArray = [];
-    // this.filterList.forEach((element) =>
-    //   filterArray.push(...this.filterDict[element])
-    // );
-
-    // this.filteredCatalogue = this.catalogue.filter(
-    //   (element) => !filterArray.includes(element.code)
-    // );
-
     this.filteredCatalogue = this.catalogue;
 
     this.selectedPapers = portfolioKeys
@@ -157,6 +148,8 @@ export default class Portfolio {
   _selectSecurities(key, portfolioMatrix) {
     // get all options with corresponding key
     // console.log(key.substring(1, 4), portfolioMatrix);
+
+    console.log(key);
 
     const portfolioOption = portfolioMatrix[key.substring(1, 4)];
 

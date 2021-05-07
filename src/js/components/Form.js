@@ -3,6 +3,7 @@ export default class Form {
     container,
     moneyScale,
     riskMatrix,
+    GOAL_ARRAY,
     openBrokerLogo,
     graphImage,
   }) {
@@ -12,9 +13,12 @@ export default class Form {
     // this.formElement = this.formSectionElement.querySelector(".form");
     this._moneyScale = moneyScale;
     this._riskMatrix = riskMatrix;
+    this._goalArray = GOAL_ARRAY;
 
     this.openBrokerLogo = openBrokerLogo;
     this.graphImage = graphImage;
+
+    // this._questionElements = [];
 
     // select all dropdown elements
     // this._questionElements = this.formElement.querySelectorAll(
@@ -38,9 +42,6 @@ export default class Form {
 
     // this._goalElement = this.formElement.querySelector(".goal");
     // // event listener
-    // [...this.inputElements].forEach((element) =>
-    //   element.addEventListener("input", this._formatInput)
-    // );
   }
 
   createFormSection() {
@@ -80,8 +81,8 @@ export default class Form {
     goalQuestionTextElement.classList.add("question__text");
     goalQuestionTextElement.textContent = "1. Выберите вашу цель";
 
-    const goalQuestionDropdownElement = document.createElement("select");
-    goalQuestionDropdownElement.classList.add(
+    this._goalQuestionDropdownElement = document.createElement("select");
+    this._goalQuestionDropdownElement.classList.add(
       "question__dropdown",
       "question__dropdown_no-input",
       "goal"
@@ -106,19 +107,23 @@ export default class Form {
     goalOptionFive.textContent = "Позаботиться о будущем детей и близких";
 
     const goalOptionSix = document.createElement("option");
-    goalOptionSix.textContent = "Попробовать торговать";
+    goalOptionSix.textContent = "Создать регулярный источник дохода";
 
     const goalOptionSeven = document.createElement("option");
-    goalOptionSeven.textContent =
+    goalOptionSeven.textContent = "Попробовать торговать";
+
+    const goalOptionEight = document.createElement("option");
+    goalOptionEight.textContent =
       "Торговать с целью финансировать крупную покупку";
 
-    goalQuestionDropdownElement.appendChild(goalOptionOne);
-    goalQuestionDropdownElement.appendChild(goalOptionTwo);
-    goalQuestionDropdownElement.appendChild(goalOptionThree);
-    goalQuestionDropdownElement.appendChild(goalOptionFour);
-    goalQuestionDropdownElement.appendChild(goalOptionFive);
-    goalQuestionDropdownElement.appendChild(goalOptionSix);
-    goalQuestionDropdownElement.appendChild(goalOptionSeven);
+    this._goalQuestionDropdownElement.appendChild(goalOptionOne);
+    this._goalQuestionDropdownElement.appendChild(goalOptionTwo);
+    this._goalQuestionDropdownElement.appendChild(goalOptionThree);
+    this._goalQuestionDropdownElement.appendChild(goalOptionFour);
+    this._goalQuestionDropdownElement.appendChild(goalOptionFive);
+    this._goalQuestionDropdownElement.appendChild(goalOptionSix);
+    this._goalQuestionDropdownElement.appendChild(goalOptionSeven);
+    this._goalQuestionDropdownElement.appendChild(goalOptionEight);
 
     ////////////////////////////////////////////////////////////////
 
@@ -127,16 +132,15 @@ export default class Form {
     sumQuestionTextElement.textContent =
       "2. Какая сумма удовлетворит вашу цель?";
 
-    const sumQuestionInputTextElement = document.createElement("input");
-    sumQuestionInputTextElement.classList.add("question__input-text");
-    sumQuestionInputTextElement.type = "text";
-    sumQuestionInputTextElement.value = "";
+    this.sumQuestionInputTextElement = document.createElement("input");
+    this.sumQuestionInputTextElement.classList.add("question__input-text");
+    this.sumQuestionInputTextElement.type = "text";
+    this.sumQuestionInputTextElement.value = "";
 
     const sumQuestionDropdownElement = document.createElement("select");
     sumQuestionDropdownElement.classList.add(
       "question__dropdown",
-      "question__dropdown_no-input",
-      "goal"
+      "question__dropdown_with-input"
     );
 
     const sumOptionOne = document.createElement("option");
@@ -166,16 +170,15 @@ export default class Form {
     termQuestionTextElement.textContent =
       "3. В какой срок вы планируете достижение цели?";
 
-    const termQuestionInputTextElement = document.createElement("input");
-    termQuestionInputTextElement.classList.add("question__input-text");
-    termQuestionInputTextElement.type = "text";
-    termQuestionInputTextElement.value = "";
+    this._termQuestionInputTextElement = document.createElement("input");
+    this._termQuestionInputTextElement.classList.add("question__input-text");
+    this._termQuestionInputTextElement.type = "text";
+    this._termQuestionInputTextElement.value = "";
 
-    const termQuestionDropdownElement = document.createElement("select");
-    termQuestionDropdownElement.classList.add(
+    this._termQuestionDropdownElement = document.createElement("select");
+    this._termQuestionDropdownElement.classList.add(
       "question__dropdown",
-      "question__dropdown_no-input",
-      "goal"
+      "question__dropdown_with-input"
     );
 
     const termOptionOne = document.createElement("option");
@@ -190,23 +193,23 @@ export default class Form {
     const termOptionThree = document.createElement("option");
     termOptionThree.textContent = "месяца";
 
-    termQuestionDropdownElement.appendChild(termOptionOne);
-    termQuestionDropdownElement.appendChild(termOptionTwo);
-    termQuestionDropdownElement.appendChild(termOptionThree);
+    this._termQuestionDropdownElement.appendChild(termOptionOne);
+    this._termQuestionDropdownElement.appendChild(termOptionTwo);
+    this._termQuestionDropdownElement.appendChild(termOptionThree);
 
     ////////////////////////////////////////////////////////////////
 
     goalQuestionElement.appendChild(goalQuestionTitleElement);
     goalQuestionElement.appendChild(goalQuestionTextElement);
-    goalQuestionElement.appendChild(goalQuestionDropdownElement);
+    goalQuestionElement.appendChild(this._goalQuestionDropdownElement);
 
     goalQuestionElement.appendChild(sumQuestionTextElement);
-    goalQuestionElement.appendChild(sumQuestionInputTextElement);
+    goalQuestionElement.appendChild(this.sumQuestionInputTextElement);
     goalQuestionElement.appendChild(sumQuestionDropdownElement);
 
     goalQuestionElement.appendChild(termQuestionTextElement);
-    goalQuestionElement.appendChild(termQuestionInputTextElement);
-    goalQuestionElement.appendChild(termQuestionDropdownElement);
+    goalQuestionElement.appendChild(this._termQuestionInputTextElement);
+    goalQuestionElement.appendChild(this._termQuestionDropdownElement);
 
     ////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////
@@ -225,13 +228,13 @@ export default class Form {
     startQuestionTextElement.textContent =
       "1. Какая ваша стартовая сумма инвестиций?";
 
-    const startQuestionInputTextElement = document.createElement("input");
-    startQuestionInputTextElement.classList.add("question__input-text");
-    startQuestionInputTextElement.type = "text";
-    startQuestionInputTextElement.value = "";
+    this.startQuestionInputTextElement = document.createElement("input");
+    this.startQuestionInputTextElement.classList.add("question__input-text");
+    this.startQuestionInputTextElement.type = "text";
+    this.startQuestionInputTextElement.value = "";
 
-    const startQuestionDropdownElement = document.createElement("select");
-    startQuestionDropdownElement.classList.add(
+    this._startQuestionDropdownElement = document.createElement("select");
+    this._startQuestionDropdownElement.classList.add(
       "question__dropdown",
       "question__dropdown_with-input"
     );
@@ -251,10 +254,10 @@ export default class Form {
     const startOptionFour = document.createElement("option");
     startOptionFour.textContent = "евро";
 
-    startQuestionDropdownElement.appendChild(startOptionOne);
-    startQuestionDropdownElement.appendChild(startOptionTwo);
-    startQuestionDropdownElement.appendChild(startOptionThree);
-    startQuestionDropdownElement.appendChild(startOptionFour);
+    this._startQuestionDropdownElement.appendChild(startOptionOne);
+    this._startQuestionDropdownElement.appendChild(startOptionTwo);
+    this._startQuestionDropdownElement.appendChild(startOptionThree);
+    this._startQuestionDropdownElement.appendChild(startOptionFour);
 
     ////////////////////////////////////////////////////////////////
 
@@ -289,15 +292,17 @@ export default class Form {
     frequencyQuestionDropdownElement.appendChild(frequencyOptionThree);
     frequencyQuestionDropdownElement.appendChild(frequencyOptionFour);
 
-    const installmentQuestionInputTextElement = document.createElement("input");
-    installmentQuestionInputTextElement.classList.add("question__input-text");
-    installmentQuestionInputTextElement.type = "text";
-    installmentQuestionInputTextElement.value = "";
+    this.installmentQuestionInputTextElement = document.createElement("input");
+    this.installmentQuestionInputTextElement.classList.add(
+      "question__input-text"
+    );
+    this.installmentQuestionInputTextElement.type = "text";
+    this.installmentQuestionInputTextElement.value = "";
 
     const installmentQuestionDropdownElement = document.createElement("select");
     installmentQuestionDropdownElement.classList.add(
       "question__dropdown",
-      "question__dropdown_no-input"
+      "question__dropdown_with-input"
     );
 
     const installmentOptionOne = document.createElement("option");
@@ -324,11 +329,13 @@ export default class Form {
 
     investmentQuestionElement.appendChild(investmentQuestionTitleElement);
     investmentQuestionElement.appendChild(startQuestionTextElement);
-    investmentQuestionElement.appendChild(startQuestionInputTextElement);
-    investmentQuestionElement.appendChild(startQuestionDropdownElement);
+    investmentQuestionElement.appendChild(this.startQuestionInputTextElement);
+    investmentQuestionElement.appendChild(this._startQuestionDropdownElement);
     investmentQuestionElement.appendChild(installmentQuestionTextElement);
     investmentQuestionElement.appendChild(frequencyQuestionDropdownElement);
-    investmentQuestionElement.appendChild(installmentQuestionInputTextElement);
+    investmentQuestionElement.appendChild(
+      this.installmentQuestionInputTextElement
+    );
     investmentQuestionElement.appendChild(installmentQuestionDropdownElement);
 
     ////////////////////////////////////////////////////////////////
@@ -348,8 +355,8 @@ export default class Form {
     resultQuestionTextElement.textContent =
       "1. Какой потенциальный результат инвестиций вы приемлете?";
 
-    const resultQuestionDropdownElement = document.createElement("select");
-    resultQuestionDropdownElement.classList.add(
+    this._resultQuestionDropdownElement = document.createElement("select");
+    this._resultQuestionDropdownElement.classList.add(
       "question__dropdown",
       "question__dropdown_no-input"
     );
@@ -372,17 +379,17 @@ export default class Form {
     const resultOptionFive = document.createElement("option");
     resultOptionFive.textContent = "Доходность: максимальная; Просадка: любая";
 
-    resultQuestionDropdownElement.appendChild(resultOptionOne);
-    resultQuestionDropdownElement.appendChild(resultOptionTwo);
-    resultQuestionDropdownElement.appendChild(resultOptionThree);
-    resultQuestionDropdownElement.appendChild(resultOptionFour);
-    resultQuestionDropdownElement.appendChild(resultOptionFive);
+    this._resultQuestionDropdownElement.appendChild(resultOptionOne);
+    this._resultQuestionDropdownElement.appendChild(resultOptionTwo);
+    this._resultQuestionDropdownElement.appendChild(resultOptionThree);
+    this._resultQuestionDropdownElement.appendChild(resultOptionFour);
+    this._resultQuestionDropdownElement.appendChild(resultOptionFive);
 
     ////////////////////////////////////////////////////////////////
 
     resultQuestionElement.appendChild(resultQuestionTitleElement);
     resultQuestionElement.appendChild(resultQuestionTextElement);
-    resultQuestionElement.appendChild(resultQuestionDropdownElement);
+    resultQuestionElement.appendChild(this._resultQuestionDropdownElement);
 
     ////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////
@@ -401,11 +408,10 @@ export default class Form {
     supportQuestionTextElement.textContent =
       "1. Выберите подходящие параметры сопровождения:";
 
-    const supportQuestionDropdownElement = document.createElement("select");
-    supportQuestionDropdownElement.classList.add(
+    this._supportQuestionDropdownElement = document.createElement("select");
+    this._supportQuestionDropdownElement.classList.add(
       "question__dropdown",
-      "question__dropdown_no-input",
-      "support-level"
+      "question__dropdown_no-input"
     );
 
     const supportOptionOne = document.createElement("option");
@@ -430,20 +436,23 @@ export default class Form {
     supportOptionFive.textContent =
       "Готов рассмотреть все варианты сопровождения";
 
-    supportQuestionDropdownElement.appendChild(supportOptionOne);
-    supportQuestionDropdownElement.appendChild(supportOptionTwo);
-    supportQuestionDropdownElement.appendChild(supportOptionThree);
-    supportQuestionDropdownElement.appendChild(supportOptionFour);
+    this._supportQuestionDropdownElement.appendChild(supportOptionOne);
+    this._supportQuestionDropdownElement.appendChild(supportOptionTwo);
+    this._supportQuestionDropdownElement.appendChild(supportOptionThree);
+    this._supportQuestionDropdownElement.appendChild(supportOptionFour);
+    this._supportQuestionDropdownElement.appendChild(supportOptionFive);
 
-    const supportQuestionInputTextElement = document.createElement("input");
-    supportQuestionInputTextElement.classList.add("question__help-checkbox");
-    supportQuestionInputTextElement.id = "support";
-    supportQuestionInputTextElement.type = "checkbox";
-    supportQuestionInputTextElement.value = "";
+    this._supportQuestionInputTextElement = document.createElement("input");
+    this._supportQuestionInputTextElement.classList.add(
+      "question__help-checkbox"
+    );
+    this._supportQuestionInputTextElement.id = "support";
+    this._supportQuestionInputTextElement.type = "checkbox";
+    this._supportQuestionInputTextElement.value = "";
 
     const supportQuestionCheckboxTextElement = document.createElement("label");
     supportQuestionCheckboxTextElement.classList.add("question__checkbox-text");
-    supportQuestionCheckboxTextElement.for = "support";
+    supportQuestionCheckboxTextElement.htmlFor = "support";
     supportQuestionCheckboxTextElement.textContent =
       "Готов рассмотреть услугу индивидуального сопровождения от Персонального брокера";
 
@@ -451,18 +460,18 @@ export default class Form {
 
     supportQuestionElement.appendChild(supportQuestionTitleElement);
     supportQuestionElement.appendChild(supportQuestionTextElement);
-    supportQuestionElement.appendChild(supportQuestionDropdownElement);
-    supportQuestionElement.appendChild(supportQuestionInputTextElement);
+    supportQuestionElement.appendChild(this._supportQuestionDropdownElement);
+    supportQuestionElement.appendChild(this._supportQuestionInputTextElement);
     supportQuestionElement.appendChild(supportQuestionCheckboxTextElement);
 
     ////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////
 
-    const formClientIdInputElement = document.createElement("input");
-    formClientIdInputElement.classList.add("form__client-id-input");
-    formClientIdInputElement.type = "text";
-    formClientIdInputElement.value = "";
-    formClientIdInputElement.placeholder = "id клиента";
+    // const formClientIdInputElement = document.createElement("input");
+    // formClientIdInputElement.classList.add("form__client-id-input");
+    // formClientIdInputElement.type = "text";
+    // formClientIdInputElement.value = "";
+    // formClientIdInputElement.placeholder = "id клиента";
 
     const buttonContainerElement = document.createElement("div");
     buttonContainerElement.classList.add("form__button-container");
@@ -484,204 +493,15 @@ export default class Form {
     this.formElement.appendChild(investmentQuestionElement);
     this.formElement.appendChild(resultQuestionElement);
     this.formElement.appendChild(supportQuestionElement);
+    // this.formElement.appendChild(formClientIdInputElement);
+    this.formElement.appendChild(buttonContainerElement);
 
     this.formSectionElement.appendChild(openBrokerLogoElement);
     this.formSectionElement.appendChild(sectionTitleElement);
     this.formSectionElement.appendChild(this.formElement);
     this.formSectionElement.appendChild(graphImageElement);
 
-    // this.formSectionElement.innerHTML = `<h2 class="section__title">Анкета</h2>
-
-    // <form class="form">
-    //   <fieldset class="question">
-    //     <legend class="question__title"> Цель </legend>
-    //     <h3 class="question__text">1. Выберите вашу цель</h3>
-    //     <select
-    //       class="question__dropdown question__dropdown_no-input goal"
-    //       name="first"
-    //     >
-    //       <option value="0" hidden disabled selected
-    //         >-- выберите вариант --</option
-    //       >
-    //       <option value="1">Создать подушку безопасности</option>
-    //       <option value="2">Защитить сбережения от инфляции</option>
-    //       <option value="3">Обеспечить свою пенсию</option>
-    //       <option value="4"
-    //         >Позаботиться о будущем детей и близких
-    //       </option>
-    //       <option value="5">Создать регулярный источник дохода </option>
-    //       <option value="6">Попробовать торговать </option>
-    //       <option value="7"
-    //         >Торговать с целью финансировать крупную покупку
-    //       </option>
-    //     </select>
-
-    //     <h3 class="question__text"
-    //       >2. Какая сумма удовлетворит вашу цель?</h3
-    //     >
-
-    //     <input class="question__input-text" type="text" value="" />
-
-    //     <select
-    //       class="question__dropdown question__dropdown_with-input"
-    //       name="currency"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите валюту --</option
-    //       >
-    //       <option value="1">рублей</option>
-    //       <option value="2">долларов</option>
-    //       <option value="3">евро</option>
-    //     </select>
-    //     <h3 class="question__text"
-    //       >3. В какой срок вы планируете достижение цели?</h3
-    //     >
-
-    //     <input class="question__input-text" type="text" value="" />
-
-    //     <select
-    //       class="question__dropdown question__dropdown_with-input"
-    //       name="currency"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите срок --</option
-    //       >
-    //       <option value="1">года</option>
-    //       <option value="2">месяца</option>
-    //     </select>
-    //   </fieldset>
-
-    //   <fieldset class="question question_with-input">
-    //     <legend class="question__title"> Сумма инвестирования </legend>
-    //     <h3 class="question__text"
-    //       >1. Какая ваша стартовая сумма инвестиций?</h3
-    //     >
-    //     <input class="question__input-text" type="text" value="" />
-
-    //     <select
-    //       class="question__dropdown question__dropdown_with-input"
-    //       name="currency"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите валюту --</option
-    //       >
-    //       <option value="1">рублей</option>
-    //       <option value="2">долларов</option>
-    //       <option value="3">евро</option>
-    //     </select>
-
-    //     <h3 class="question__text"
-    //       >2. Планируете ли вы регулярные довнесения денежных средств?</h3
-    //     >
-
-    //     <select
-    //       class="question__dropdown question__dropdown_no-input"
-    //       name="first"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите срок --</option
-    //       >
-    //       <option value="1">каждый месяц</option>
-    //       <option value="2">каждый квартал</option>
-    //       <option value="3">каждый год</option>
-    //     </select>
-    //     <input class="question__input-text" type="text" value="" />
-
-    //     <select
-    //       class="question__dropdown question__dropdown_with-input"
-    //       name="currency"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите валюту --</option
-    //       >
-    //       <option value="1">рублей</option>
-    //       <option value="2">долларов</option>
-    //       <option value="3">евро</option>
-    //     </select>
-    //   </fieldset>
-    //   <fieldset class="question">
-    //     <legend class="question__title"> Доходность / Просадка </legend>
-    //     <h3 class="question__text"
-    //       >1. Какой потенциальный результат инвестиций вы приемлете?</h3
-    //     >
-    //     <select
-    //       class="question__dropdown question__dropdown_no-input"
-    //       name="first"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите вариант --</option
-    //       >
-    //       <option value="1">Доходность: +8%; Просадка: -5%</option>
-    //       <option value="2">Доходность: +15%; Просадка: -10%</option>
-    //       <option value="3">Доходность: +20%; Просадка: -15%</option>
-    //       <option value="4"
-    //         >Доходность: максимальная; Просадка: любая</option
-    //       >
-    //     </select>
-    //   </fieldset>
-
-    //   <fieldset class="question">
-    //     <legend class="question__title">Параметры сопровождения</legend>
-    //     <h3 class="question__text"
-    //       >1. Выберите подходящие параметры сопровождения:</h3
-    //     >
-    //     <select
-    //       class="question__dropdown question__dropdown_no-input support-level"
-    //       name="first"
-    //       ><option value="0" hidden disabled selected
-    //         >-- выберите вариант --</option
-    //       >
-    //       <option value="1"
-    //         >Сопровождение не требуется, торгую самостоятельно</option
-    //       >
-    //       <option value="2"
-    //         >Нужна аналитика и поддержка, включая инвестиционные идеи, но
-    //         решения принимаю самостоятельно</option
-    //       >
-
-    //       <option value="3"
-    //         >Готов доверить инвестиционные решения профессиональным
-    //         управляющим</option
-    //       >
-    //       <option value="4"
-    //         >Готов рассмотреть все варианты сопровождения</option
-    //       >
-    //     </select>
-
-    //     <input
-    //       type="checkbox"
-    //       id="accompaniment"
-    //       class="question__help-checkbox"
-    //     />
-    //     <label for="accompaniment" class="question__checkbox-text"
-    //       >Готов рассмотреть услугу индивидуального сопровождения от
-    //       Персонального брокера</label
-    //     >
-    //   </fieldset>
-
-    //   <input
-    //     class="form__client-id-input"
-    //     type="text"
-    //     value=""
-    //     placeholder="id клиента"
-    //   />
-
-    //   <div class="form__button-container">
-    //     <button class="button form__refresh-button" type="button"
-    //       >Новый портфель</button
-    //     ><button class="button form__print-button"
-    //       >Распечатать</button
-    //     ></div
-    //   >
-    // </form>`;
-
     this.container.appendChild(this.formSectionElement);
-
-    // this.formSectionElement.insertBefore(
-    //   openBrokerLogoElement,
-    //   this.formSectionElement.firstChild
-    // );
-  }
-
-  _formatInput(event) {
-    event.target.value = event.target.value
-      .replace(/[^\dA-Z]/g, "")
-      .replace(/(\d)(?=(\d{3})+$)/g, "$1 ")
-      .trim();
   }
 
   getAnswers() {
@@ -700,9 +520,6 @@ export default class Form {
 
     this._goalElement = this.formElement.querySelector(".goal");
     // event listener
-    [...this.inputElements].forEach((element) =>
-      element.addEventListener("input", this._formatInput)
-    );
 
     ////////////////////////////////////////////////////
 
@@ -716,20 +533,47 @@ export default class Form {
     ].text;
 
     this.helpRequestTicked = this.helpCheckboxElement.checked;
-    // console.log(this.helpRequestTicked);
   }
 
-  getInvestmentAmount() {
-    this._getCurrency();
+  getAnswers() {
+    switch (this._startQuestionDropdownElement.selectedIndex) {
+      case 1:
+        this.currency = "ruble";
+        this.isCurrency = false;
+        break;
+      case 2:
+        this.currency = "dollar";
+        this.isCurrency = true;
+        break;
+      case 3:
+        this.currency = "euro";
+        this.isCurrency = true;
+        break;
+    }
 
     this.investmentAmount =
-      +[...this.inputElements][2].value.replace(/\s/g, "") >=
+      +this.startQuestionInputTextElement.value.replace(/\s/g, "") >=
       10000 * this.prices[this.currency]
-        ? +[...this.inputElements][2].value.replace(/\s/g, "")
+        ? +this.startQuestionInputTextElement.value.replace(/\s/g, "")
         : 10000 * this.prices[this.currency];
 
     this.investmentAmountRubbles =
       this.investmentAmount / this.prices[this.currency];
+
+    this.helpRequestString = this._supportQuestionDropdownElement[
+      this._supportQuestionDropdownElement.selectedIndex
+    ].text;
+
+    this.helpRequestTicked = this._supportQuestionInputTextElement.checked;
+
+    this._termName = this._termQuestionDropdownElement[
+      this._termQuestionDropdownElement.selectedIndex
+    ].text;
+    this._termNumber = +this._termQuestionInputTextElement.value;
+
+    console.log(this._termName, this._termNumber);
+
+    console.log(this.helpRequestString, this.helpRequestTicked);
   }
 
   updatePrices(prices) {
@@ -740,38 +584,39 @@ export default class Form {
     };
   }
 
-  getClientId() {
-    this.clientId = this.clientIdInputElement.value;
-  }
+  // getClientId() {
+  //   this.clientId = this.clientIdInputElement.value;
+  // }
 
   assignRiskProfile() {
-    const goalArray = [
-      ["Защитить сбережения от инфляции", "Создать подушку безопасности"],
-      ["Попробовать торговать"],
-      [
-        "Обеспечить свою пенсию",
-        "Позаботиться о будущем детей и близких",
-        "Создать регулярный источник дохода",
-      ],
-      ["Торговать с целью финансировать крупную покупку"],
-    ];
-
     let goalIndex;
-    goalArray.forEach((element, index) => {
+    this._goalArray.forEach((element, index) => {
       if (
         element.includes(
-          this._goalElement[this._goalElement.selectedIndex].text
+          this._goalQuestionDropdownElement[
+            this._goalQuestionDropdownElement.selectedIndex
+          ].text
         )
       ) {
         goalIndex = index;
       }
     });
 
+    // console.log(this._resultQuestionDropdownElement.selectedIndex - 1);
+
     this.riskProfiles = [
-      +this._riskMatrix[this._answers[6]][goalIndex],
-      +this._riskMatrix[this._answers[6]][goalIndex] < 7
-        ? +this._riskMatrix[this._answers[6]][goalIndex] + 1
-        : +this._riskMatrix[this._answers[6]][goalIndex],
+      +this._riskMatrix[this._resultQuestionDropdownElement.selectedIndex - 1][
+        goalIndex
+      ],
+      +this._riskMatrix[this._resultQuestionDropdownElement.selectedIndex - 1][
+        goalIndex
+      ] < 7
+        ? +this._riskMatrix[
+            this._resultQuestionDropdownElement.selectedIndex - 1
+          ][goalIndex] + 1
+        : +this._riskMatrix[
+            this._resultQuestionDropdownElement.selectedIndex - 1
+          ][goalIndex],
     ];
   }
 
@@ -779,46 +624,34 @@ export default class Form {
     this.portfolioKeys = this.riskProfiles.map(
       (profile) =>
         profile +
+        "." +
         Object.keys(this._moneyScale)
           .reverse()
           .find((key) => this._moneyScale[key] <= this.investmentAmountRubbles)
     );
+
+    console.log(this.portfolioKeys);
   }
 
   assignDueDate() {
-    switch (this._answers[3]) {
-      case 0:
-        this.dueDate = new Date(
-          new Date().setFullYear(new Date().getFullYear() + 1)
+    console.log(this._termName);
+    switch (this._termName) {
+      case "месяца":
+        new Date(new Date().setMonth(new Date().getMonth() + this._termNumber));
+        break;
+
+      case "года":
+        new Date(
+          new Date().setFullYear(new Date().getFullYear() + this._termNumber)
         );
         break;
-      case 1:
-        this.dueDate = new Date(
-          new Date().setFullYear(new Date().getFullYear() + 2)
-        );
-        break;
-      case 2:
+
       default:
         this.dueDate = new Date(
           new Date().setFullYear(new Date().getFullYear() + 100)
         );
-    }
-  }
 
-  _getCurrency() {
-    switch (this._answers[3]) {
-      case 0:
-        this.currency = "ruble";
-        this.isCurrency = false;
-        break;
-      case 1:
-        this.currency = "dollar";
-        this.isCurrency = true;
-        break;
-      case 2:
-        this.currency = "euro";
-        this.isCurrency = true;
-        break;
+        console.log(this.dueDate);
     }
   }
 }

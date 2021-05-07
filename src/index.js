@@ -76,11 +76,13 @@ import { MATRIX_RUB_NONE } from "./js/constants/matrixes/matrix_rub_none.js";
 import { MATRIX_RUB_READY } from "./js/constants/matrixes/matrix_rub_ready.js";
 import { MATRIX_RUB_REC } from "./js/constants/matrixes/matrix_rub_rec.js";
 
-import { MONEY_SCALE, RISK_MATRIX } from "./js/constants/scales.js";
+import { MONEY_SCALE, RISK_MATRIX, GOAL_ARRAY } from "./js/constants/scales.js";
 import { RECS_LIST } from "./js/constants/recs-list.js";
 import { FILTER_DICT } from "./js/constants/filter-dict.js";
 import { RECOMMENDATION_MATRIX } from "./js/constants/recommendation-matrix.js";
 import { CATALOGUE } from "./js/constants/catalogue.js";
+
+import { moneyInputFormatter } from "./js/utils/moneyInputFormatter";
 
 // import constants required for exchange rates api
 import {
@@ -109,6 +111,7 @@ const form = new Form({
   container: mainElement,
   moneyScale: MONEY_SCALE,
   riskMatrix: RISK_MATRIX,
+  GOAL_ARRAY,
   openBrokerLogo,
   graphImage,
 });
@@ -208,9 +211,9 @@ exchangeRatesApi
 const handleChanges = () => {
   // form methods that get answers, investment amount and filter selections
   // and assign risk profiles, portfolio keys and due date for portfolio selection
+  // form.getAnswers();
   form.getAnswers();
-  form.getInvestmentAmount();
-  // form.getFilter();
+
   form.assignRiskProfile();
   form.assignPortfolioKeys();
   form.assignDueDate();
@@ -250,7 +253,8 @@ const handleChanges = () => {
 };
 
 // add eventlisteneer to refresh button to get new portfolio rendered
-form.refreshButtonElement.addEventListener("click", () => {
+form.refreshButtonElement.addEventListener("click", (event) => {
+  event.preventDefault();
   handleChanges();
 });
 
@@ -268,16 +272,23 @@ form.printButtonElement.addEventListener("click", (event) => {
 // add eventlistener to form element, handles changes only if input was via checkbox dropdown or text input
 // AND investment amount in rubles is more than 10000 (Portfolio can find portfolio for lower sums of money,
 // but either will get and error or it's not feasible in terms of investing)
-// form.formElement.addEventListener("input", (event) => {
-//   if (
-//     (event.target.classList.contains("question__dropdown") ||
-//       event.target.classList.contains("question__input-text") ||
-//       event.target.classList.contains("question__checkbox")) &&
-//     form.investmentAmountRubbles >= 10000
-//   ) {
-//     handleChanges();
-//   }
-// });
+form.formElement.addEventListener("input", (event) => {
+  if (
+    event.target.classList.contains("question__dropdown") ||
+    event.target.classList.contains("question__input-text") ||
+    event.target.classList.contains("question__checkbox")
+    //   &&
+    // form.investmentAmountRubbles >= 10000
+  ) {
+    handleChanges();
+  }
+});
+
+[
+  form.startQuestionInputTextElement,
+  form.sumQuestionInputTextElement,
+  form.installmentQuestionInputTextElement,
+].forEach((element) => element.addEventListener("input", moneyInputFormatter));
 
 // add eventlistener to support level element (5th question) and implements a logic that autoselects corresponding filters
 // form.supportLevelElement.addEventListener("input", () => {
@@ -291,8 +302,8 @@ form.printButtonElement.addEventListener("click", (event) => {
 //   rootElement.insertBefore(mainElement, footer.footerElement);
 // });
 
-form.formElement.addEventListener("click", (event) => {
-  if (event.target.classList.contains("question__label")) {
-    form.updateFilter(event);
-  }
-});
+// form.formElement.addEventListener("click", (event) => {
+//   if (event.target.classList.contains("question__label")) {
+//     form.updateFilter(event);
+//   }
+// });
