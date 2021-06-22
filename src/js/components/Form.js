@@ -504,36 +504,31 @@ export default class Form {
     this.container.appendChild(this.formSectionElement);
   }
 
-  getAnswers() {
-    this._questionElements = this.formElement.querySelectorAll(
-      ".question__dropdown"
-    );
+  // getAnswers() {
+  //   this._questionElements = this.formElement.querySelectorAll(
+  //     ".question__dropdown"
+  //   );
 
-    this.supportLevelElement = this.formElement.querySelector(".support-level");
-    this.helpCheckboxElement = this.formElement.querySelector(
-      ".question__help-checkbox"
-    );
+  //   this.supportLevelElement = this.formElement.querySelector(".support-level");
+  //   this.helpCheckboxElement = this.formElement.querySelector(
+  //     ".question__help-checkbox"
+  //   );
 
-    this.clientIdInputElement = this.formElement.querySelector(
-      ".form__client-id-input"
-    );
+  //   this.clientIdInputElement = this.formElement.querySelector(
+  //     ".form__client-id-input"
+  //   );
 
-    this._goalElement = this.formElement.querySelector(".goal");
-    // event listener
+  //   this._goalElement = this.formElement.querySelector(".goal");
+  //   this._answers = [];
+  //   this._questionElements.forEach((question) =>
+  //     this._answers.push(question.selectedIndex - 1)
+  //   );
+  //   this.helpRequestString = this.supportLevelElement.options[
+  //     this.supportLevelElement.selectedIndex
+  //   ].text;
 
-    ////////////////////////////////////////////////////
-
-    this._answers = [];
-    this._questionElements.forEach((question) =>
-      this._answers.push(question.selectedIndex - 1)
-    );
-
-    this.helpRequestString = this.supportLevelElement.options[
-      this.supportLevelElement.selectedIndex
-    ].text;
-
-    this.helpRequestTicked = this.helpCheckboxElement.checked;
-  }
+  //   this.helpRequestTicked = this.helpCheckboxElement.checked;
+  // }
 
   getAnswers() {
     switch (this._startQuestionDropdownElement.selectedIndex) {
@@ -571,9 +566,9 @@ export default class Form {
     ].text;
     this._termNumber = +this._termQuestionInputTextElement.value;
 
-    console.log(this._termName, this._termNumber);
+    // console.log(this._termName, this._termNumber);
 
-    console.log(this.helpRequestString, this.helpRequestTicked);
+    // console.log(this.helpRequestString, this.helpRequestTicked);
   }
 
   updatePrices(prices) {
@@ -624,17 +619,16 @@ export default class Form {
     this.portfolioKeys = this.riskProfiles.map(
       (profile) =>
         profile +
-        "." +
         Object.keys(this._moneyScale)
           .reverse()
           .find((key) => this._moneyScale[key] <= this.investmentAmountRubbles)
     );
 
-    console.log(this.portfolioKeys);
+    // console.log(this.portfolioKeys);
   }
 
   assignDueDate() {
-    console.log(this._termName);
+    // console.log(this._termName);
     switch (this._termName) {
       case "месяца":
         new Date(new Date().setMonth(new Date().getMonth() + this._termNumber));
@@ -651,7 +645,7 @@ export default class Form {
           new Date().setFullYear(new Date().getFullYear() + 100)
         );
 
-        console.log(this.dueDate);
+      // console.log(this.dueDate);
     }
   }
 }

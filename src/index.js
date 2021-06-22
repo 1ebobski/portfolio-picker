@@ -1,48 +1,6 @@
-// for matrix convertation from wrong json (got from csv to json converter) to right one
-
-// import { RAW_RUB_LB } from "./js/constants/raw-matrixes/raw_rub_lb.js";
-// import { RAW_RUB_FULL } from "./js/constants/raw-matrixes/raw_rub_full.js";
-// import { RAW_RUB_NONE } from "./js/constants/raw-matrixes/raw_rub_none.js";
-// import { RAW_RUB_READY } from "./js/constants/raw-matrixes/raw_rub_ready.js";
-// import { RAW_RUB_REC } from "./js/constants/raw-matrixes/raw_rub_rec.js";
-// import { RAW_CUR_LB } from "./js/constants/raw-matrixes/raw_cur_lb.js";
-// import { RAW_CUR_FULL } from "./js/constants/raw-matrixes/raw_cur_full.js";
-// import { RAW_CUR_NONE } from "./js/constants/raw-matrixes/raw_cur_none.js";
-// import { RAW_CUR_READY } from "./js/constants/raw-matrixes/raw_cur_ready.js";
-// import { RAW_CUR_REC } from "./js/constants/raw-matrixes/raw_cur_rec.js";
-
-// import { matrixConverter } from "./js/utils/matrixConverter.js";
-
-// const matrixNamesArray = [
-//   "MATRIX_CUR_FULL",
-//   "MATRIX_CUR_LB",
-//   "MATRIX_CUR_NONE",
-//   "MATRIX_CUR_READY",
-//   "MATRIX_CUR_REC",
-//   "MATRIX_RUB_FULL",
-//   "MATRIX_RUB_LB",
-//   "MATRIX_RUB_NONE",
-//   "MATRIX_RUB_READY",
-//   "MATRIX_RUB_REC",
-// ];
-
-// [
-//   RAW_CUR_FULL,
-//   RAW_CUR_LB,
-//   RAW_CUR_NONE,
-//   RAW_CUR_READY,
-//   RAW_CUR_REC,
-//   RAW_RUB_FULL,
-//   RAW_RUB_LB,
-//   RAW_RUB_NONE,
-//   RAW_RUB_READY,
-//   RAW_RUB_REC,
-// ].forEach((matrix, index) =>
-//   console.log(
-//     `export const ${matrixNamesArray[index]} =`,
-//     JSON.stringify(matrixConverter(matrix))
-//   )
-// );
+// import function for matrix conversion from wrong json (got from csv to json converter) to correct one one. only needed for development
+// import { prepareMatrixes } from "./js/utils/prepareMatrixes.js";
+// prepareMatrixes();
 
 //import logo and qr code images
 import openBrokerLogo from "./images/open-logo.svg";
@@ -55,7 +13,7 @@ import cardIcon from "./images/card-icon.svg";
 // import styles, components and modules
 import "./index.css";
 import Header from "./js/components/Header.js";
-import LoginForm from "./js/components/LoginForm.js";
+// import LoginForm from "./js/components/LoginForm.js";
 import Form from "./js/components/Form.js";
 import Portfolio from "./js/modules/Portfolio.js";
 import ExchangeRatesApi from "./js/modules/ExchangeRatesApi.js";
@@ -97,9 +55,9 @@ const rootElement = document.querySelector(".root");
 const mainElement = document.createElement("main");
 mainElement.classList.add("main");
 
-const loginForm = new LoginForm({
-  container: rootElement,
-});
+// const loginForm = new LoginForm({
+//   container: rootElement,
+// });
 
 const header = new Header({
   container: rootElement,
@@ -196,9 +154,10 @@ exchangeRatesApi
     const euPrice = response.rates.EUR * usdPrice;
     const rates = { EUR: euPrice, USD: usdPrice };
 
-    // console.log(rates);
+    // temporary rates to code in internet absence
     // const tempRates = { EUR: 0.0125875781, USD: 0.0142063406 };
     // report.updatePrices(tempRates);
+
     form.updatePrices(rates);
     report.updatePrices(rates);
     // handleChanges();
@@ -211,7 +170,6 @@ exchangeRatesApi
 const handleChanges = () => {
   // form methods that get answers, investment amount and filter selections
   // and assign risk profiles, portfolio keys and due date for portfolio selection
-  // form.getAnswers();
   form.getAnswers();
 
   form.assignRiskProfile();
@@ -219,21 +177,20 @@ const handleChanges = () => {
   form.assignDueDate();
 
   // update portfolio with required data from form component
-  portfolio.updatePortfolio({
+  portfolio.getData({
     portfolioKeys: form.portfolioKeys,
     dueDate: form.dueDate,
     investmentAmount: form.investmentAmount,
     investmentAmountRubbles: form.investmentAmountRubbles,
     isCurrency: form.isCurrency,
     currency: form.currency,
-    // filterList: form.filterList,
     helpRequestString: form.helpRequestString,
     helpRequestTicked: form.helpRequestTicked,
   });
 
-  // console.log(portfolio.portfolio);
+  portfolio.selectPapers();
 
-  // update report with required data from form and portfolio components
+  // update report with required data from portfolio component
   report.updateReportData({
     portfolio: portfolio.portfolio,
     currency: portfolio.currency,
@@ -277,8 +234,6 @@ form.formElement.addEventListener("input", (event) => {
     event.target.classList.contains("question__dropdown") ||
     event.target.classList.contains("question__input-text") ||
     event.target.classList.contains("question__checkbox")
-    //   &&
-    // form.investmentAmountRubbles >= 10000
   ) {
     handleChanges();
   }
@@ -290,20 +245,9 @@ form.formElement.addEventListener("input", (event) => {
   form.installmentQuestionInputTextElement,
 ].forEach((element) => element.addEventListener("input", moneyInputFormatter));
 
-// add eventlistener to support level element (5th question) and implements a logic that autoselects corresponding filters
-// form.supportLevelElement.addEventListener("input", () => {
-//   form.manageFilterState();
-// });
-
 // add click event listener to form element that works only when clicked on filter buttons and updates filters' state
 // loginForm.loginFormElement.addEventListener("submit", (event) => {
 //   event.preventDefault();
 //   rootElement.removeChild(loginForm.loginFormElement);
 //   rootElement.insertBefore(mainElement, footer.footerElement);
-// });
-
-// form.formElement.addEventListener("click", (event) => {
-//   if (event.target.classList.contains("question__label")) {
-//     form.updateFilter(event);
-//   }
 // });
