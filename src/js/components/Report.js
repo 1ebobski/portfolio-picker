@@ -214,25 +214,6 @@ export default class Report {
     optionElement.appendChild(optionHeaderElement);
     optionElement.appendChild(optionAboutElement);
 
-    //   optionElement.innerHTML = `<div class="option__header"
-    //   ><h3 class="option__name">${option.shareChoice}</h3>
-    //   <div class="option__amount">
-    //   <span class="option__number">${Math.round(option.factAmount)
-    //     .toString()
-    //     .replace(/(\d)(?=(\d{3})+$)/g, "$1 ")}</span
-    //   ><span class="option__currency"> ${
-    //     this.prices[this.currency].sign
-    //   }</span></div></div
-    // >
-    // <div class="option__main"
-    //   ><p class="option__about"
-    //     >${option.salesPoints}</p
-    //   ></div>`;
-
-    // salesPoints,
-    //     regularityType,
-    //     regularityValue,
-
     const regularityTypeArray = option.regularityType.split("\n");
     const regularityValueArray = option.regularityValue.split("\n");
 

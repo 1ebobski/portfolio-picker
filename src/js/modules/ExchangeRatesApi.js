@@ -6,15 +6,7 @@ export default class ExchangeRatesApi {
   getRates() {
     const url = `${this._options.baseUrl}${this._options.method}?app_id=${this._options.appId}`;
 
-    return fetch(
-      url
-      //     {
-      //   method: "GET",
-      //   headers: {
-      //     "X-Api-Key": this._options.apiKey,
-      //   },
-      // }
-    )
+    return fetch(url)
       .then((res) => {
         if (res.ok) {
           return res.json();

@@ -3,7 +3,6 @@ export default class Portfolio {
     catalogue,
     filterDict,
     recsCatalogue,
-
     matrixCurFull,
     matrixCurLb,
     matrixCurNone,
@@ -18,7 +17,6 @@ export default class Portfolio {
     this.catalogue = catalogue;
     this.filterDict = filterDict;
     this.recsCatalogue = recsCatalogue;
-
     this.matrixCurFull = matrixCurFull;
     this.matrixCurLb = matrixCurLb;
     this.matrixCurNone = matrixCurNone;
@@ -31,72 +29,37 @@ export default class Portfolio {
     this.matrixRubRec = matrixRubRec;
   }
 
-  _matrixApplier(isCurrency) {
-    if (this.helpRequestTicked) {
-      // console.log("LB");
-      return isCurrency ? this.matrixCurLb : this.matrixRubLb;
-    } else {
-      switch (this.helpRequestString) {
-        case "Сопровождение не требуется, торгую самостоятельно":
-          // console.log("NONE");
-          return isCurrency ? this.matrixCurNone : this.matrixRubNone;
-          break;
-        case "Нужна аналитика и поддержка, включая инвестиционные идеи, но решения принимаю самостоятельно":
-          // console.log("REC");
-          return isCurrency ? this.matrixCurRec : this.matrixRubRec;
-          break;
-        case "Готов доверить инвестиционные решения профессиональным управляющим":
-          // console.log("READY");
-          return isCurrency ? this.matrixCurReady : this.matrixRubReady;
-          break;
-        case "Готов рассмотреть все варианты сопровождения":
-          // console.log("FULL");
-          return isCurrency ? this.matrixCurFull : this.matrixRubFull;
-          break;
-      }
-    }
-  }
-
-  updatePortfolio({
+  getData({
     portfolioKeys,
     dueDate,
     investmentAmount,
     investmentAmountRubbles,
     isCurrency,
     currency,
-    // filterList,
     helpRequestString,
     helpRequestTicked,
   }) {
-    this.currency = currency;
-    // this.filterList = filterList;
+    this.portfolioKeys = portfolioKeys;
+    this.dueDate = dueDate;
     this.investmentAmount = investmentAmount;
     this.investmentAmountRubbles = investmentAmountRubbles;
-    this.previousShare = 0;
-
+    this.isCurrency = isCurrency;
+    this.currency = currency;
     this.helpRequestString = helpRequestString;
     this.helpRequestTicked = helpRequestTicked;
+  }
 
-    // const filterArray = [];
-    // this.filterList.forEach((element) =>
-    //   filterArray.push(...this.filterDict[element])
-    // );
+  selectPapers() {
+    const selectionMatrix = this._matrixApplier();
 
-    // this.filteredCatalogue = this.catalogue.filter(
-    //   (element) => !filterArray.includes(element.code)
-    // );
-
-    this.filteredCatalogue = this.catalogue;
-
-    this.selectedPapers = portfolioKeys
+    this.selectedPapers = this.portfolioKeys
       .map((key) =>
-        [".1", ".2", ".3"].map((subKey) => {
-          return this._selectSecurities(
-            key + subKey,
-            this._matrixApplier(isCurrency)
-          );
-        })
+        [".1", ".2", ".3"].map((subKey) =>
+          this._selectSecurity(key + subKey, selectionMatrix)
+        )
       )
+
+      // filtering any bad papers got from catalogue (catalogue is not perfect)
       .map((element) =>
         element.filter(
           (element) =>
@@ -106,28 +69,15 @@ export default class Portfolio {
         )
       );
 
-    // console.log(this.selectedPapers);
-
-    this.portfolio = this.selectedPapers.map((element) =>
-      this._composePortfolio(element)
-    );
-
-    // console.log(this.portfolio);
-
-    // this.portfolio[0].forEach((element) => console.log(element.forDiagram));
+    this.portfolio = this.selectedPapers.map(this._composePortfolio.bind(this));
 
     // hotfix: before share sum could be less that 100 due to minAMount filtering in _composePortfolio()
 
     this.portfolio.forEach((portfolio) => {
-      // console.log(portfolio);
-
       if (portfolio.length > 0) {
         const sharesSum = portfolio.reduce((acc, cur) => {
-          // console.log(acc, cur);
           return acc + cur.forDiagram;
         }, 0);
-
-        // console.log(sharesSum);
 
         if (sharesSum < 100) {
           if (portfolio.length > 1) {
@@ -143,44 +93,58 @@ export default class Portfolio {
           }
         }
       }
-      // console.log(sharesSum);
     });
-
-    // console.log(test1, test2);
-
-    // this.portfolio.forEach((element) => console.log(element));
-
-    this.dueDate = dueDate;
-    // console.log(portfolioKeys);
   }
 
-  _selectSecurities(key, portfolioMatrix) {
+  _matrixApplier() {
+    if (!this.helpRequestTicked) {
+      switch (this.helpRequestString) {
+        case "Сопровождение не требуется, торгую самостоятельно":
+          // console.log("NONE");
+          return this.isCurrency ? this.matrixCurNone : this.matrixRubNone;
+          break;
+        case "Нужна аналитика и поддержка, включая инвестиционные идеи, но решения принимаю самостоятельно":
+          // console.log("REC");
+          return this.isCurrency ? this.matrixCurRec : this.matrixRubRec;
+          break;
+        case "Готов доверить инвестиционные решения профессиональным управляющим":
+          // console.log("READY");
+          return this.isCurrency ? this.matrixCurReady : this.matrixRubReady;
+          break;
+        case "Готов рассмотреть все варианты сопровождения":
+          // console.log("FULL");
+          return this.isCurrency ? this.matrixCurFull : this.matrixRubFull;
+          break;
+      }
+    } else {
+      // console.log("LB");
+      return this.isCurrency ? this.matrixCurLb : this.matrixRubLb;
+    }
+  }
+
+  _selectSecurity(key, portfolioMatrix) {
     // get all options with corresponding key
-    // console.log(key.substring(1, 4), portfolioMatrix);
+
+    // console.log(key, key.substring(1, 4), portfolioMatrix);
 
     const portfolioOption = portfolioMatrix[key.substring(1, 4)];
 
-    // console.log(portfolioOption);
-
     // select one random option from portfolioOption
-    // console.log(portfolioOption);
+
     const portfolioSelection =
       portfolioOption.portfolios[
         Math.floor(Math.random() * portfolioOption.portfolios.length)
       ];
 
-    // console.log(portfolioSelection);
-
     // select option with corresponding risk profile (number)
     const selectedCatalogueCode = portfolioSelection[key.charAt(0) - 1];
 
     if (
-      this.filteredCatalogue.find((element) => {
-        // console.log(element.code);
+      this.catalogue.find((element) => {
         return element.code === selectedCatalogueCode;
       })
     ) {
-      const shareArray = this.filteredCatalogue.filter(
+      const shareArray = this.catalogue.filter(
         (element) => element.code === selectedCatalogueCode
       );
 
@@ -188,8 +152,6 @@ export default class Portfolio {
         shareArray[Math.floor(Math.random() * shareArray.length)];
 
       selectedSecurity.share = portfolioOption.shares[key.charAt(0) - 1];
-
-      // console.log(selectedSecurity);
 
       return selectedSecurity;
     } else {
@@ -200,7 +162,6 @@ export default class Portfolio {
   _composePortfolio(portfolioSet) {
     this.previousShare = 0;
 
-    // console.log(portfolioSet);
     return portfolioSet
       .map((element) => this._composeOption(element))
       .filter((item) => item);
@@ -214,8 +175,6 @@ export default class Portfolio {
 
     const shareInPercents = (security.share * (100 - this.previousShare)) / 100;
 
-    // console.log(this.investmentAmount, shareInPercents, this.previousShare);
-
     if ((this.investmentAmount * shareInPercents) / 100 >= minAmount) {
       this.previousShare = shareInPercents + this.previousShare;
 
@@ -224,20 +183,20 @@ export default class Portfolio {
       const forDiagram = shareInPercents;
       const roi = Math.round(
         Number(
-          this.filteredCatalogue
+          this.catalogue
             .find((element) => element.name === shareChoice)
             .return.replace("%", "")
         ),
         2
       );
 
-      const salesPoints = this.filteredCatalogue.find(
+      const salesPoints = this.catalogue.find(
         (element) => element.name === shareChoice
       ).salesPoints;
-      const regularityType = this.filteredCatalogue.find(
+      const regularityType = this.catalogue.find(
         (element) => element.name === shareChoice
       ).regularityType;
-      const regularityValue = this.filteredCatalogue.find(
+      const regularityValue = this.catalogue.find(
         (element) => element.name === shareChoice
       ).regularityValue;
 
