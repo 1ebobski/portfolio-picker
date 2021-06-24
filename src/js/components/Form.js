@@ -17,31 +17,6 @@ export default class Form {
 
     this.openBrokerLogo = openBrokerLogo;
     this.graphImage = graphImage;
-
-    // this._questionElements = [];
-
-    // select all dropdown elements
-    // this._questionElements = this.formElement.querySelectorAll(
-    //   ".question__dropdown"
-    // );
-
-    // select accompaniment question
-
-    // select money amount input element
-    // this.inputElements = this.formElement.querySelectorAll(
-    //   ".question__input-text"
-    // );
-    // this.supportLevelElement = this.formElement.querySelector(".support-level");
-    // this.helpCheckboxElement = this.formElement.querySelector(
-    //   ".question__help-checkbox"
-    // );
-
-    // this.clientIdInputElement = this.formElement.querySelector(
-    //   ".form__client-id-input"
-    // );
-
-    // this._goalElement = this.formElement.querySelector(".goal");
-    // // event listener
   }
 
   createFormSection() {
@@ -504,32 +479,6 @@ export default class Form {
     this.container.appendChild(this.formSectionElement);
   }
 
-  // getAnswers() {
-  //   this._questionElements = this.formElement.querySelectorAll(
-  //     ".question__dropdown"
-  //   );
-
-  //   this.supportLevelElement = this.formElement.querySelector(".support-level");
-  //   this.helpCheckboxElement = this.formElement.querySelector(
-  //     ".question__help-checkbox"
-  //   );
-
-  //   this.clientIdInputElement = this.formElement.querySelector(
-  //     ".form__client-id-input"
-  //   );
-
-  //   this._goalElement = this.formElement.querySelector(".goal");
-  //   this._answers = [];
-  //   this._questionElements.forEach((question) =>
-  //     this._answers.push(question.selectedIndex - 1)
-  //   );
-  //   this.helpRequestString = this.supportLevelElement.options[
-  //     this.supportLevelElement.selectedIndex
-  //   ].text;
-
-  //   this.helpRequestTicked = this.helpCheckboxElement.checked;
-  // }
-
   getAnswers() {
     switch (this._startQuestionDropdownElement.selectedIndex) {
       case 1:
@@ -555,20 +504,18 @@ export default class Form {
     this.investmentAmountRubbles =
       this.investmentAmount / this.prices[this.currency];
 
-    this.helpRequestString = this._supportQuestionDropdownElement[
-      this._supportQuestionDropdownElement.selectedIndex
-    ].text;
+    this.helpRequestString =
+      this._supportQuestionDropdownElement[
+        this._supportQuestionDropdownElement.selectedIndex
+      ].text;
 
     this.helpRequestTicked = this._supportQuestionInputTextElement.checked;
 
-    this._termName = this._termQuestionDropdownElement[
-      this._termQuestionDropdownElement.selectedIndex
-    ].text;
+    this._termName =
+      this._termQuestionDropdownElement[
+        this._termQuestionDropdownElement.selectedIndex
+      ].text;
     this._termNumber = +this._termQuestionInputTextElement.value;
-
-    // console.log(this._termName, this._termNumber);
-
-    // console.log(this.helpRequestString, this.helpRequestTicked);
   }
 
   updatePrices(prices) {
@@ -597,8 +544,6 @@ export default class Form {
       }
     });
 
-    // console.log(this._resultQuestionDropdownElement.selectedIndex - 1);
-
     this.riskProfiles = [
       +this._riskMatrix[this._resultQuestionDropdownElement.selectedIndex - 1][
         goalIndex
@@ -623,8 +568,6 @@ export default class Form {
           .reverse()
           .find((key) => this._moneyScale[key] <= this.investmentAmountRubbles)
     );
-
-    // console.log(this.portfolioKeys);
   }
 
   assignDueDate() {
@@ -644,8 +587,6 @@ export default class Form {
         this.dueDate = new Date(
           new Date().setFullYear(new Date().getFullYear() + 100)
         );
-
-      // console.log(this.dueDate);
     }
   }
 }
